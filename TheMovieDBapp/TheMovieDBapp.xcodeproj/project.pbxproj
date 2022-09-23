@@ -13,6 +13,8 @@
 		0817B27728DDE47E0060DBFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0817B27528DDE47E0060DBFA /* Main.storyboard */; };
 		0817B27928DDE47F0060DBFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0817B27828DDE47F0060DBFA /* Assets.xcassets */; };
 		0817B27C28DDE47F0060DBFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0817B27A28DDE47F0060DBFA /* LaunchScreen.storyboard */; };
+		0817B28428DE07E20060DBFA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817B28328DE07E20060DBFA /* NetworkManager.swift */; };
+		0817B28728DE300D0060DBFA /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817B28628DE300D0060DBFA /* TokenModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		0817B27828DDE47F0060DBFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0817B27B28DDE47F0060DBFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0817B27D28DDE47F0060DBFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0817B28328DE07E20060DBFA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0817B28628DE300D0060DBFA /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		0817B26E28DDE47E0060DBFA /* TheMovieDBapp */ = {
 			isa = PBXGroup;
 			children = (
+				0817B28528DE2FF40060DBFA /* Models */,
+				0817B28328DE07E20060DBFA /* NetworkManager.swift */,
 				0817B26F28DDE47E0060DBFA /* AppDelegate.swift */,
 				0817B27128DDE47E0060DBFA /* SceneDelegate.swift */,
 				0817B27328DDE47E0060DBFA /* ViewController.swift */,
@@ -65,6 +71,14 @@
 				0817B27D28DDE47F0060DBFA /* Info.plist */,
 			);
 			path = TheMovieDBapp;
+			sourceTree = "<group>";
+		};
+		0817B28528DE2FF40060DBFA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0817B28628DE300D0060DBFA /* TokenModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +152,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0817B28428DE07E20060DBFA /* NetworkManager.swift in Sources */,
 				0817B27428DDE47E0060DBFA /* ViewController.swift in Sources */,
 				0817B27028DDE47E0060DBFA /* AppDelegate.swift in Sources */,
+				0817B28728DE300D0060DBFA /* TokenModel.swift in Sources */,
 				0817B27228DDE47E0060DBFA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

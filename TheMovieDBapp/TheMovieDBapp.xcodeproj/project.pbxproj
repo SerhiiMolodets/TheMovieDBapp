@@ -9,25 +9,29 @@
 /* Begin PBXBuildFile section */
 		0817B27028DDE47E0060DBFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817B26F28DDE47E0060DBFA /* AppDelegate.swift */; };
 		0817B27228DDE47E0060DBFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817B27128DDE47E0060DBFA /* SceneDelegate.swift */; };
-		0817B27428DDE47E0060DBFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817B27328DDE47E0060DBFA /* ViewController.swift */; };
+		0817B27428DDE47E0060DBFA /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817B27328DDE47E0060DBFA /* AuthorizationViewController.swift */; };
 		0817B27728DDE47E0060DBFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0817B27528DDE47E0060DBFA /* Main.storyboard */; };
 		0817B27928DDE47F0060DBFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0817B27828DDE47F0060DBFA /* Assets.xcassets */; };
 		0817B27C28DDE47F0060DBFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0817B27A28DDE47F0060DBFA /* LaunchScreen.storyboard */; };
-		0817B28428DE07E20060DBFA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817B28328DE07E20060DBFA /* NetworkManager.swift */; };
+		0817B28428DE07E20060DBFA /* AuthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817B28328DE07E20060DBFA /* AuthNetworkManager.swift */; };
 		0817B28728DE300D0060DBFA /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817B28628DE300D0060DBFA /* TokenModel.swift */; };
+		086E14DB28E0C3A400502117 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086E14DA28E0C3A400502117 /* AuthorizationViewModel.swift */; };
+		086E14DE28E0C56B00502117 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086E14DD28E0C56B00502117 /* Dynamic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0817B26C28DDE47E0060DBFA /* TheMovieDBapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovieDBapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0817B26F28DDE47E0060DBFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0817B27128DDE47E0060DBFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0817B27328DDE47E0060DBFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0817B27328DDE47E0060DBFA /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		0817B27628DDE47E0060DBFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0817B27828DDE47F0060DBFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0817B27B28DDE47F0060DBFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0817B27D28DDE47F0060DBFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0817B28328DE07E20060DBFA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0817B28328DE07E20060DBFA /* AuthNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNetworkManager.swift; sourceTree = "<group>"; };
 		0817B28628DE300D0060DBFA /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
+		086E14DA28E0C3A400502117 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
+		086E14DD28E0C56B00502117 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +64,13 @@
 		0817B26E28DDE47E0060DBFA /* TheMovieDBapp */ = {
 			isa = PBXGroup;
 			children = (
+				086E14D828E0C2C600502117 /* ViewModels */,
+				086E14D728E0C2AB00502117 /* Views */,
 				0817B28528DE2FF40060DBFA /* Models */,
-				0817B28328DE07E20060DBFA /* NetworkManager.swift */,
+				0817B28328DE07E20060DBFA /* AuthNetworkManager.swift */,
 				0817B26F28DDE47E0060DBFA /* AppDelegate.swift */,
 				0817B27128DDE47E0060DBFA /* SceneDelegate.swift */,
-				0817B27328DDE47E0060DBFA /* ViewController.swift */,
-				0817B27528DDE47E0060DBFA /* Main.storyboard */,
 				0817B27828DDE47F0060DBFA /* Assets.xcassets */,
-				0817B27A28DDE47F0060DBFA /* LaunchScreen.storyboard */,
 				0817B27D28DDE47F0060DBFA /* Info.plist */,
 			);
 			path = TheMovieDBapp;
@@ -81,6 +84,41 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		086E14D728E0C2AB00502117 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0817B27328DDE47E0060DBFA /* AuthorizationViewController.swift */,
+				086E14D928E0C2DD00502117 /* Storyboards */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		086E14D828E0C2C600502117 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				086E14DC28E0C52A00502117 /* Bindings */,
+				086E14DA28E0C3A400502117 /* AuthorizationViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		086E14D928E0C2DD00502117 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0817B27528DDE47E0060DBFA /* Main.storyboard */,
+				0817B27A28DDE47F0060DBFA /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		086E14DC28E0C52A00502117 /* Bindings */ = {
+			isa = PBXGroup;
+			children = (
+				086E14DD28E0C56B00502117 /* Dynamic.swift */,
+			);
+			path = Bindings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -91,6 +129,7 @@
 				0817B26828DDE47E0060DBFA /* Sources */,
 				0817B26928DDE47E0060DBFA /* Frameworks */,
 				0817B26A28DDE47E0060DBFA /* Resources */,
+				086E14D428E0A26C00502117 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -147,13 +186,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		086E14D428E0A26C00502117 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0817B26828DDE47E0060DBFA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0817B28428DE07E20060DBFA /* NetworkManager.swift in Sources */,
-				0817B27428DDE47E0060DBFA /* ViewController.swift in Sources */,
+				086E14DB28E0C3A400502117 /* AuthorizationViewModel.swift in Sources */,
+				0817B28428DE07E20060DBFA /* AuthNetworkManager.swift in Sources */,
+				0817B27428DDE47E0060DBFA /* AuthorizationViewController.swift in Sources */,
+				086E14DE28E0C56B00502117 /* Dynamic.swift in Sources */,
 				0817B27028DDE47E0060DBFA /* AppDelegate.swift in Sources */,
 				0817B28728DE300D0060DBFA /* TokenModel.swift in Sources */,
 				0817B27228DDE47E0060DBFA /* SceneDelegate.swift in Sources */,

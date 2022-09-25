@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - Token
+// MARK: - Tokens model
 struct Token: Codable {
     let success: Bool
     let expiresAt, requestToken: String
@@ -19,7 +19,7 @@ struct Token: Codable {
     }
 }
 
-// MARK: - ValidateToken
+// MARK: - ValidateToken model
 struct ValidateToken: Codable {
     let username, password, requestToken: String
 

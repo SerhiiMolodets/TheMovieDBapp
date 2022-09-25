@@ -8,7 +8,7 @@
 import UIKit
 
 class AuthorizationViewController: UIViewController {
-    var authorizationViewModel = AuthorizationViewModel()
+    lazy var authorizationViewModel = AuthorizationViewModel()
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -16,16 +16,23 @@ class AuthorizationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
     }
     func bindAuthorizationModel() {
+
         authorizationViewModel.isLogin.bind { isLogin in
-            //            TODO present new vc
+
         }
     }
     
     @IBAction func signInDidTap(_ sender: UIButton) {
         authorizationViewModel.signInDidTap(userNameTextField.text ?? "", passwordTextField.text ?? "")
         bindAuthorizationModel()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarControllerID")
+        view.window?.rootViewController = tabBarController
+        view.window?.makeKeyAndVisible()
+
     }
     
 }

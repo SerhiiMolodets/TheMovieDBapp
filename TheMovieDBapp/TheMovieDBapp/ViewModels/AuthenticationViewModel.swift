@@ -7,8 +7,8 @@
 
 import Foundation
 
-class AuthorizationViewModel {
-    var isLogin = Dynamic(false)
+class AuthenticationViewModel {
+    var isLogin = false
     let authNetworkManager = AuthNetworkManager()
     
     func signInDidTap( _ userName: String, _ password: String) {
@@ -17,7 +17,10 @@ class AuthorizationViewModel {
             print("error")
 //            TODO Alert
             return
+  
         }
-        authNetworkManager.logInWith(username: userName, password: password)
+        authNetworkManager.logInWith(username: userName, password: password) { [weak self] token in
+            self?.isLogin = token.success
+        }
     }
 }

@@ -28,3 +28,29 @@ struct ValidateToken: Codable {
         case requestToken = "request_token"
     }
 }
+
+
+
+
+
+
+// MARK: - SessionID
+struct SessionID: Codable {
+    let sessionID: String
+
+    enum CodingKeys: String, CodingKey {
+        case sessionID = "session_id"
+    }
+}
+
+// MARK: - GuestSessionID
+struct GuestSessionID: Codable {
+    let success: Bool
+    let guestSessionID, expiresAt: String
+
+    enum CodingKeys: String, CodingKey {
+        case success
+        case guestSessionID = "guest_session_id"
+        case expiresAt = "expires_at"
+    }
+}

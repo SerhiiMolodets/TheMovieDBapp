@@ -19,18 +19,21 @@ class AuthenticationViewController: UIViewController {
     }
     func bindAuthentication() {
         if authenticationViewModel.isLogin {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let firstnavController = storyboard.instantiateViewController(withIdentifier: "firstNavControllerId")
-            view.window?.rootViewController = firstnavController
-            view.window?.makeKeyAndVisible()
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let firstnavController = storyboard.instantiateViewController(withIdentifier: "firstNavControllerId")
+                self.view.window?.rootViewController = firstnavController
+                self.view.window?.makeKeyAndVisible()
+            }
+          
         }
     }
     
     @IBAction func signInDidTap(_ sender: UIButton) {
-        authenticationViewModel.signInDidTap(userNameTextField.text ?? "", passwordTextField.text ?? "")
-        DispatchQueue.main.async {
+        authenticationViewModel.signInDidTap(userNameTextField.text ?? "", passwordTextField.text ?? "") {
+            
             self.bindAuthentication()
         }
-      
+     
     }
 }

@@ -28,17 +28,21 @@ struct ValidateToken: Codable {
         case requestToken = "request_token"
     }
 }
+// MARK: - TokenBody
+struct TokenBody: Codable {
+    let requestToken: String
 
-
-
-
-
-
+    enum CodingKeys: String, CodingKey {
+        case requestToken = "request_token"
+    }
+}
 // MARK: - SessionID
 struct SessionID: Codable {
+    let success: Bool
     let sessionID: String
 
     enum CodingKeys: String, CodingKey {
+        case success
         case sessionID = "session_id"
     }
 }

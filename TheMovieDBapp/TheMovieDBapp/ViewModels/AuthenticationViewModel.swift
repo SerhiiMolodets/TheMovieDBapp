@@ -11,16 +11,18 @@ class AuthenticationViewModel {
     var isLogin = false
     let authNetworkManager = AuthNetworkManager()
     
-    func signInDidTap( _ userName: String, _ password: String) {
+    func signInDidTap( _ userName: String, _ password: String, complitionHandler: @escaping (() -> Void)) {
         guard !userName.isEmpty,
               !password.isEmpty else {
             print("error")
 //            TODO Alert
             return
-  
         }
         authNetworkManager.logInWith(username: userName, password: password) { [weak self] token in
             self?.isLogin = token.success
+            complitionHandler()
         }
+        
     }
+    
 }

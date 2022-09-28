@@ -17,6 +17,7 @@ class AuthenticationViewController: UIViewController {
         super.viewDidLoad()
 
     }
+
     func bindAuthentication() {
         if authenticationViewModel.isLogin {
             DispatchQueue.main.async {
@@ -30,10 +31,10 @@ class AuthenticationViewController: UIViewController {
     }
     
     @IBAction func signInDidTap(_ sender: UIButton) {
-        authenticationViewModel.signInDidTap(userNameTextField.text ?? "", passwordTextField.text ?? "") {
-            
+        authenticationViewModel.signInDidTap(userNameTextField.text ?? "", passwordTextField.text ?? "") { 
             self.bindAuthentication()
         }
      
     }
+    
 }

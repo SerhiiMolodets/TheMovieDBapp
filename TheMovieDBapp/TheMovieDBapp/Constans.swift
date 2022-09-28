@@ -13,5 +13,7 @@ enum APIs: String {
     case newToken = "https://api.themoviedb.org/3/authentication/token/new"
     case validateToken = "https://api.themoviedb.org/3/authentication/token/validate_with_login"
     case createSessionId = "https://api.themoviedb.org/3/authentication/session/new"
-    
+    case account = "https://api.themoviedb.org/3/account"
+
 }
+

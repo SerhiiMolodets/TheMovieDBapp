@@ -9,20 +9,19 @@ import Foundation
 
 class AuthenticationViewModel {
     var isLogin = false
-    let authNetworkManager = AuthNetworkManager()
-    
-    func signInDidTap( _ userName: String, _ password: String, complitionHandler: @escaping (() -> Void)) {
+
+    func signInDidTap( _ userName: String, _ password: String, completionHandler: @escaping (() -> Void)) {
         guard !userName.isEmpty,
               !password.isEmpty else {
             print("error")
 //            TODO Alert
             return
         }
-        authNetworkManager.logInWith(username: userName, password: password) { [weak self] token in
-            self?.isLogin = token.success
-            complitionHandler()
+        AuthNetworkManager.shared.makeMultiRequest(username: userName, password: password) { [weak self] success in
+            guard let self = self else { return }
+            self.isLogin = success
+            completionHandler()
         }
-        
+
     }
-    
 }

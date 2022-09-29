@@ -14,6 +14,13 @@ enum APIs: String {
     case validateToken = "https://api.themoviedb.org/3/authentication/token/validate_with_login"
     case createSessionId = "https://api.themoviedb.org/3/authentication/session/new"
     case account = "https://api.themoviedb.org/3/account"
+    case guestSessionID = "https://api.themoviedb.org/3/authentication/guest_session/new"
 
 }
 
+enum HTTPMethod: String {
+    case GET
+    case POST
+    case PUT
+    case DELETE
+}

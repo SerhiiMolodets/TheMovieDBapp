@@ -40,11 +40,7 @@ class AuthenticationViewController: UIViewController {
         // MARK: - Comfigure signInButton
         signInButton.layer.cornerRadius = 18
         signInButton.layerGradient()
-        
-        // MARK: - Comfigure guestInButton
-
-        
-        
+         
     }
     
     func bindAuthentication() {
@@ -65,6 +61,13 @@ class AuthenticationViewController: UIViewController {
         }
         
     }
+    @IBAction func guestSignInDidTap(_ sender: UIButton) {
+        authenticationViewModel.guestSignInDidTap {
+            self.bindAuthentication()
+        }
+
+    }
+    
     
 }
 

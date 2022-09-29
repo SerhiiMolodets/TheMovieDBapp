@@ -9,21 +9,12 @@ import Foundation
 
 class AuthNetworkManager {
     static let shared = AuthNetworkManager()
-    //    Need to delete
-    let login = "mr_molodets"
-    let password = "mukola123456"
     var sessionID = ""
     var token = ""
     var iserID = ""
     
-    enum HTTPMethod: String {
-        case GET
-        case POST
-        case PUT
-        case DELETE
-    }
     // MARK: - Standart check of responce func
-    func checkResponce(_ data: Data?, _ responce: URLResponse?, _ error: Error?, completionHandler: @escaping (Data) -> Void) {
+    private func checkResponce(_ data: Data?, _ responce: URLResponse?, _ error: Error?, completionHandler: @escaping (Data) -> Void) {
         if error != nil {
             print("error")
         } else if let resp = responce as? HTTPURLResponse,
@@ -49,7 +40,7 @@ class AuthNetworkManager {
         }.resume()
     }
     // MARK: - Validate token with userName and password
-    func logInWith(username: String, password: String, _ completionHandler: @escaping () -> Void) {
+    private  func logInWith(username: String, password: String, _ completionHandler: @escaping () -> Void) {
             let validateBody = ValidateToken(username: username, password: password, requestToken: self.token)
             
             let sendData = try? JSONEncoder().encode(validateBody)
@@ -98,9 +89,25 @@ class AuthNetworkManager {
                 }
             }
         }.resume()
-        
     }
-    func getDetails(_ sessionID: String, completionHandler: @escaping () -> Void) {
+    // MARK: - Create guests session
+    func guestSession(_ completionHandler: @escaping (GuestSessionID) -> Void) {
+        guard let url = URL(string: APIs.guestSessionID.rawValue) else { return }
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        components?.queryItems = [ URLQueryItem(name: "api_key", value: APIs.apiKey.rawValue)]
+        guard let queryURL = components?.url else { return }
+        
+        URLSession.shared.dataTask(with: queryURL) { [weak self] (data, responce, error) in
+            guard let self = self else { return }
+            self.checkResponce(data, responce, error, completionHandler: { responceData in
+                if let guestSessionResponce = try? JSONDecoder().decode(GuestSessionID.self, from: responceData) {
+                    completionHandler(guestSessionResponce)
+                }
+            })
+        }.resume()
+    }
+    
+    private func getDetails(_ sessionID: String, completionHandler: @escaping () -> Void) {
         guard let url = URL(string: APIs.account.rawValue) else { return }
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         components?.queryItems = [ URLQueryItem(name: "api_key", value: APIs.apiKey.rawValue),
@@ -148,5 +155,4 @@ class AuthNetworkManager {
     }
     
 }
-
 

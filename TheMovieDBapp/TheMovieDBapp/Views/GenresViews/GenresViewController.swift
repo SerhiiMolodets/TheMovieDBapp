@@ -8,10 +8,24 @@
 import UIKit
 
 class GenresViewController: UIViewController {
-
+    let genresViewModel = GenresViewModel()
+    
+    var genres: [Genre] = []
+    @IBOutlet weak var genreTableView: UITableView! {
+        didSet {
+            genreTableView.dataSource = self
+            genreTableView.register(UINib(nibName: "GenreTableViewCell", bundle: nil), forCellReuseIdentifier: "GenreViewCellId")
+        }
+    }
+    
+    @IBOutlet weak var typeSegmentControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        genresViewModel.updateGenre {
+            print(self.genresViewModel.genres.count)
+                self.genreTableView.reloadData()
+        }
+        print(self.genresViewModel.genres.count)
         // Do any additional setup after loading the view.
     }
     
@@ -26,4 +40,18 @@ class GenresViewController: UIViewController {
     }
     */
 
+}
+
+extension GenresViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        return genresViewModel.genres.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = genreTableView.dequeueReusableCell(withIdentifier: "GenreViewCellId", for: indexPath) as! GenreTableViewCell
+        cell.configure(genresViewModel.genres[indexPath.row])
+        return cell
+    }
+    
 }

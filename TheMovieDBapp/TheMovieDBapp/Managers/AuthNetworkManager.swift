@@ -13,16 +13,6 @@ class AuthNetworkManager {
     var token = ""
     var iserID = ""
     
-    // MARK: - Standart check of responce func
-    private func checkResponce(_ data: Data?, _ responce: URLResponse?, _ error: Error?, completionHandler: @escaping (Data) -> Void) {
-        if error != nil {
-            print("error")
-        } else if let resp = responce as? HTTPURLResponse,
-                  resp.statusCode == 200, let responceData = data {
-            completionHandler(responceData)
-        }
-    }
-    
     // MARK: - Get new users token
     private func newToken(_ completionHandler: @escaping (Token) -> Void) {
         guard let url = URL(string: APIs.newToken.rawValue) else { return }
@@ -30,9 +20,8 @@ class AuthNetworkManager {
         components?.queryItems = [ URLQueryItem(name: "api_key", value: APIs.apiKey.rawValue)]
         guard let queryURL = components?.url else { return }
         
-        URLSession.shared.dataTask(with: queryURL) { [weak self] (data, responce, error) in
-            guard let self = self else { return }
-            self.checkResponce(data, responce, error, completionHandler: { responceData in
+        URLSession.shared.dataTask(with: queryURL) { (data, responce, error) in
+            APIs.checkResponce(data, responce, error, completionHandler: { responceData in
                 if let token = try? JSONDecoder().decode(Token.self, from: responceData) {
                     completionHandler(token)
                 }
@@ -58,7 +47,7 @@ class AuthNetworkManager {
             
             URLSession.shared.dataTask(with: request) { [weak self] (data, responce, error) in
                 guard let self = self else { return }
-                self.checkResponce(data, responce, error) { _ in
+                APIs.checkResponce(data, responce, error) { _ in
                     print(self.token)
                     completionHandler()
                 }
@@ -80,9 +69,8 @@ class AuthNetworkManager {
         request.setValue("\(data.count)", forHTTPHeaderField: "Content-Length")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        URLSession.shared.dataTask(with: request) {[weak self] (data, responce, error) in
-            guard let self = self else { return }
-            self.checkResponce(data, responce, error) { responceData in
+        URLSession.shared.dataTask(with: request) { (data, responce, error) in
+            APIs.checkResponce(data, responce, error) { responceData in
                 if let sessionID = try? JSONDecoder().decode(SessionID.self, from: responceData) {
                     print("session id " + sessionID.sessionID)
                     completionHandler(sessionID)
@@ -97,9 +85,8 @@ class AuthNetworkManager {
         components?.queryItems = [ URLQueryItem(name: "api_key", value: APIs.apiKey.rawValue)]
         guard let queryURL = components?.url else { return }
         
-        URLSession.shared.dataTask(with: queryURL) { [weak self] (data, responce, error) in
-            guard let self = self else { return }
-            self.checkResponce(data, responce, error, completionHandler: { responceData in
+        URLSession.shared.dataTask(with: queryURL) { (data, responce, error) in
+            APIs.checkResponce(data, responce, error, completionHandler: { responceData in
                 if let guestSessionResponce = try? JSONDecoder().decode(GuestSessionID.self, from: responceData) {
                     completionHandler(guestSessionResponce)
                 }
@@ -114,9 +101,8 @@ class AuthNetworkManager {
                                    URLQueryItem(name: "session_id", value: sessionID)]
         guard let queryURL = components?.url else { return }
         
-        URLSession.shared.dataTask(with: queryURL) { [weak self] (data, responce, error) in
-            guard let self = self else { return }
-            self.checkResponce(data, responce, error, completionHandler: { responceData in
+        URLSession.shared.dataTask(with: queryURL) { (data, responce, error) in
+            APIs.checkResponce(data, responce, error, completionHandler: { responceData in
                 if let accountDetail = try? JSONDecoder().decode(Account.self, from: responceData) {
                     print("usersID + \(accountDetail.id)")
                     completionHandler()
@@ -153,6 +139,4 @@ class AuthNetworkManager {
             }
         }
     }
-    
 }
-

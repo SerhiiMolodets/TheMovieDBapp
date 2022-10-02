@@ -18,6 +18,13 @@ struct Genre: Codable {
     let name: String
 }
 
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let moviesByGenre = try? newJSONDecoder().decode(MoviesByGenre.self, from: jsonData)
+
+import Foundation
+
 // MARK: - MoviesByGenre
 struct MoviesByGenre: Codable {
     let page: Int
@@ -34,7 +41,7 @@ struct MoviesByGenre: Codable {
 // MARK: - Result
 struct ResultByGenre: Codable {
     let adult: Bool
-    let backdropPath: String
+    let backdropPath: String?
     let genreIDS: [Int]
     let id: Int
     let originalLanguage: OriginalLanguage
@@ -62,8 +69,17 @@ struct ResultByGenre: Codable {
 }
 
 enum OriginalLanguage: String, Codable {
-    case en = "en"
-    case ja = "ja"
-    case ko = "ko"
-    case ru = "ru"
+    case en
+    case fr
+    case ja
+    case te
+    case de
+    case ko
+    case es
+    case pl
+    case zh
+    case ru
+    case it
+    case ta
+    
 }

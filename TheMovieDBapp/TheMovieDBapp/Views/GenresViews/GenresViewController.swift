@@ -20,16 +20,16 @@ class GenresViewController: UIViewController {
     
     @IBOutlet weak var typeSegmentControl: UISegmentedControl!
     override func viewDidLoad() {
+
         super.viewDidLoad()
         genresViewModel.updateGenre {
-            print(self.genresViewModel.genres.count)
+            self.genreTableView.rowHeight = UITableView.automaticDimension
+            self.genreTableView.estimatedRowHeight = 300
                 self.genreTableView.reloadData()
         }
-        print(self.genresViewModel.genres.count)
-        // Do any additional setup after loading the view.
+
     }
     
-
     /*
     // MARK: - Navigation
 

@@ -13,7 +13,6 @@ class GenresViewModel {
     func updateGenre(_ completionHandler: @escaping () -> Void) {
         GenresNetworkManager.shared.getGenres { [weak self] genres in
             guard let self = self else { return }
-            print(genres.count)
             self.genres = genres
         }
     }
@@ -21,7 +20,7 @@ class GenresViewModel {
         GenresNetworkManager.shared.getWithGenre(String(genre)) { [weak self] movies in
             guard let self = self else { return }
             self.moviesByGenre = movies
+            completionHandler()
         }
     }
 }
-

@@ -10,38 +10,50 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="GenreViewCell" selectionStyle="default" indentationWidth="10" rowHeight="250" id="KGk-i7-Jjw" customClass="GenreTableViewCell" customModule="TheMovieDBapp" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="GenreViewCell" selectionStyle="default" indentationWidth="10" rowHeight="0.0" id="KGk-i7-Jjw" customClass="GenreTableViewCell" customModule="TheMovieDBapp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5B-ER-GM5">
-                        <rect key="frame" x="0.0" y="8" width="320" height="27.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hgk-Py-BGw">
-                        <rect key="frame" x="0.0" y="35.5" width="320" height="214.5"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Phn-7V-wtb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hgk-Py-BGw">
+                                <rect key="frame" x="0.0" y="31.5" width="320" height="218.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2nx-Wy-yJX">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5B-ER-GM5">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="27.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2nx-Wy-yJX">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                    </collectionView>
+                        <constraints>
+                            <constraint firstItem="o5B-ER-GM5" firstAttribute="leading" secondItem="Phn-7V-wtb" secondAttribute="leading" id="1dI-er-72h"/>
+                            <constraint firstAttribute="trailing" secondItem="o5B-ER-GM5" secondAttribute="trailing" id="5hP-xD-FO3"/>
+                            <constraint firstItem="o5B-ER-GM5" firstAttribute="top" secondItem="Phn-7V-wtb" secondAttribute="top" id="6z8-Tt-Hlf"/>
+                            <constraint firstAttribute="trailing" secondItem="hgk-Py-BGw" secondAttribute="trailing" id="WQU-5W-2zF"/>
+                            <constraint firstItem="hgk-Py-BGw" firstAttribute="top" secondItem="o5B-ER-GM5" secondAttribute="bottom" constant="4" id="Z3U-Pm-8lW"/>
+                            <constraint firstItem="hgk-Py-BGw" firstAttribute="leading" secondItem="Phn-7V-wtb" secondAttribute="leading" id="hpB-FS-Y9Z"/>
+                            <constraint firstAttribute="bottom" secondItem="hgk-Py-BGw" secondAttribute="bottom" id="tqU-Nk-P3D"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="o5B-ER-GM5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6Ek-BQ-h3l"/>
-                    <constraint firstItem="hgk-Py-BGw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="En9-k7-1lf"/>
-                    <constraint firstAttribute="bottom" secondItem="hgk-Py-BGw" secondAttribute="bottom" id="FZE-WX-LoR"/>
-                    <constraint firstItem="hgk-Py-BGw" firstAttribute="top" secondItem="o5B-ER-GM5" secondAttribute="bottom" id="Ht2-91-iPY"/>
-                    <constraint firstAttribute="trailing" secondItem="hgk-Py-BGw" secondAttribute="trailing" id="RBg-mg-2hC"/>
-                    <constraint firstAttribute="trailing" secondItem="o5B-ER-GM5" secondAttribute="trailing" id="U77-Zw-ioz"/>
-                    <constraint firstItem="o5B-ER-GM5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="xTM-Av-jly"/>
+                    <constraint firstAttribute="trailing" secondItem="Phn-7V-wtb" secondAttribute="trailing" id="1vN-0s-TpY"/>
+                    <constraint firstItem="Phn-7V-wtb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4Rd-G9-5KP"/>
+                    <constraint firstItem="Phn-7V-wtb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bIH-Y3-wEE"/>
+                    <constraint firstAttribute="bottom" secondItem="Phn-7V-wtb" secondAttribute="bottom" id="h0G-rm-8t6"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -68,7 +68,6 @@ class AuthenticationViewController: UIViewController {
 
     }
     
-    
 }
 
 extension UITextField {

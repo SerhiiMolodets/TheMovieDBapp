@@ -48,7 +48,13 @@ extension GenreTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCollectionViewCellId", for: indexPath) as! GenreCollectionViewCell
-        cell.configure(with: genresViewModel.moviesByGenre[indexPath.row])
+        cell.configure(with: genresViewModel.moviesByGenre[indexPath.row],
+                       path: genresViewModel.moviesByGenre[indexPath.row].posterPath)
         return cell
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let itemSize = (collectionView.frame.height - (collectionView.contentInset.top + collectionView.contentInset.bottom + 10)) / 3
+//        return CGSize(width: itemSize, height: itemSize)
+//    }
 }

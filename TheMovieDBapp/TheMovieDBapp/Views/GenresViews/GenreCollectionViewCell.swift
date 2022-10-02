@@ -6,29 +6,27 @@
 //
 
 import UIKit
+import SDWebImage
 
 class GenreCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    private var path: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    func configure(with movieByGenre: ResultByGenre) {
-        indicator.startAnimating()
+    override func prepareForReuse() {
+        titleImageView.image = nil
+    }
+    func configure(with movieByGenre: ResultByGenre, path: String) {
+        self.path = path
         self.titleLabel.text = movieByGenre.title
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            if let url = URL(string: APIs.getImage.rawValue + movieByGenre.posterPath),
-               let data = try? Data(contentsOf: url),
-               let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self?.titleImageView.image = image
-                    self?.indicator.stopAnimating()
-                }
-                
-            }
-        }
+        indicator.startAnimating()
+        self.titleImageView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + movieByGenre.posterPath)), completed: { [weak self] _, _, _, _ in
+            self?.indicator.stopAnimating()
+        })
     }
 }

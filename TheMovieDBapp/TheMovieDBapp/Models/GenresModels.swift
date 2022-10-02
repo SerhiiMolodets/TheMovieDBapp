@@ -18,13 +18,6 @@ struct Genre: Codable {
     let name: String
 }
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let moviesByGenre = try? newJSONDecoder().decode(MoviesByGenre.self, from: jsonData)
-
-import Foundation
-
 // MARK: - MoviesByGenre
 struct MoviesByGenre: Codable {
     let page: Int

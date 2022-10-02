@@ -19,7 +19,7 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ym4-ZT-Wme">
                         <rect key="frame" x="0.0" y="0.0" width="270" height="460"/>
                     </imageView>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7mG-Lh-6TM">
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7mG-Lh-6TM">
                         <rect key="frame" x="116.5" y="222" width="37" height="37"/>
                         <color key="color" red="0.1318514697" green="1" blue="0.79792760839999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </activityIndicatorView>

@@ -6,42 +6,38 @@
 //
 
 import UIKit
+import RxSwift
 
 class GenresViewController: UIViewController {
     let genresViewModel = GenresViewModel()
+    let disposeBag = DisposeBag()
     
-    var genres: [Genre] = []
     @IBOutlet weak var genreTableView: UITableView! {
         didSet {
-            genreTableView.dataSource = self
             genreTableView.register(UINib(nibName: "GenreTableViewCell", bundle: nil), forCellReuseIdentifier: "GenreViewCellId")
         }
     }
-    
     @IBOutlet weak var typeSegmentControl: UISegmentedControl!
+    
     override func viewDidLoad() {
-
         super.viewDidLoad()
-        genresViewModel.updateGenre {
-            self.genreTableView.rowHeight = UITableView.automaticDimension
-            self.genreTableView.estimatedRowHeight = 300
-                self.genreTableView.reloadData()
-        }
-
+        bindTableData()
     }
     
-}
-
-extension GenresViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return genresViewModel.genres.count
+    // MARK: Connetct data and configure tableView
+    func bindTableData() {
+        //        Drive genres to table
+        genresViewModel.genres.asDriver(onErrorJustReturn: [])
+            .drive(genreTableView.rx.items(cellIdentifier: "GenreViewCellId",
+                                           cellType: GenreTableViewCell.self)) {_, genre, cell in
+                cell.configure(genre)
+            }.disposed(by: disposeBag)
+        //        Update genres
+        genresViewModel.updateGenre()
+        //        Bind a model selected handler
+        //        genreTableView.rx.modelSelected(Genre.self).bind { genre in
+        //            print(genre.name)
+        //        }.disposed(by: disposeBag)
+        
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = genreTableView.dequeueReusableCell(withIdentifier: "GenreViewCellId", for: indexPath) as! GenreTableViewCell
-        cell.configure(genresViewModel.genres[indexPath.row])
-        return cell
-    }
-    
 }

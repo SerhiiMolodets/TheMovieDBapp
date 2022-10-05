@@ -93,7 +93,7 @@ class AuthNetworkManager {
             })
         }.resume()
     }
-    
+    // MARK: - Get users info
     private func getDetails(_ sessionID: String, completionHandler: @escaping () -> Void) {
         guard let url = URL(string: APIs.account.rawValue) else { return }
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
@@ -110,7 +110,7 @@ class AuthNetworkManager {
             })
         }.resume()
     }
-    
+    // MARK: - Make requests one by one
     func makeMultiRequest(username: String, password: String, completionHandler: @escaping (Bool) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }

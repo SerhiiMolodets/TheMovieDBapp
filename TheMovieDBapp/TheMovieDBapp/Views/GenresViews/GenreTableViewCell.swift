@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import RxSwift
 
 class GenreTableViewCell: UITableViewCell {
+    var disposeBag = DisposeBag()
+    
     let genresViewModel = GenresViewModel()
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var genreCollectionView: UICollectionView! {
@@ -20,7 +23,9 @@ class GenreTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        //        self.genresViewModel.movieOrTV.asObservable().subscribe { event in
+        //            print(event)
+        //        }.disposed(by: disposeBag)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,14 +34,12 @@ class GenreTableViewCell: UITableViewCell {
     }
     func configure(_ genre: Genre) {
         self.titleLabel.text = genre.name
-        
         self.genresViewModel.getMovieWith(genre: genre.id) { [weak self] in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.genreCollectionView.reloadData()
             }
         }
-        
     }
     
 }
@@ -53,8 +56,8 @@ extension GenreTableViewCell: UICollectionViewDataSource {
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let itemSize = (collectionView.frame.height - (collectionView.contentInset.top + collectionView.contentInset.bottom + 10)) / 3
-//        return CGSize(width: itemSize, height: itemSize)
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //        let itemSize = (collectionView.frame.height - (collectionView.contentInset.top + collectionView.contentInset.bottom + 10)) / 3
+    //        return CGSize(width: itemSize, height: itemSize)
+    //    }
 }

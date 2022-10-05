@@ -15,12 +15,12 @@ enum APIs: String {
     case createSessionId = "https://api.themoviedb.org/3/authentication/session/new"
     case account = "https://api.themoviedb.org/3/account"
     case guestSessionID = "https://api.themoviedb.org/3/authentication/guest_session/new"
-    case getGenreList = "https://api.themoviedb.org/3/genre/movie/list"
-    case getResultWithGenre = "https://api.themoviedb.org/3/discover/movie"
+    case getMoviesGenreList = "https://api.themoviedb.org/3/genre/movie/list"
+    case getTVsGenreList = "https://api.themoviedb.org/3/genre/tv/list"
+    case getResultWithGenre = "https://api.themoviedb.org/3/discover/"
     case getImage = "https://image.tmdb.org/t/p/original"
     
 
-    
     static func checkResponce(_ data: Data?, _ responce: URLResponse?, _ error: Error?, completionHandler: @escaping (Data) -> Void) {
         if error != nil {
             print("error")

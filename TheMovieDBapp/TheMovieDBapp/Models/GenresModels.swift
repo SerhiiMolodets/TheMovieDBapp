@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxDataSources
 
 // MARK: - Genres
 struct Genres: Codable {
@@ -32,7 +33,11 @@ struct MoviesByGenre: Codable {
 }
 
 // MARK: - Result
-struct ResultByGenre: Codable {
+struct ResultByGenre: Codable, IdentifiableType, Equatable {
+    var identity: Int { return id }
+    
+    typealias Identity = Int
+    
     let backdropPath: String?
     let genreIDS: [Int]
     let id: Int
@@ -54,5 +59,24 @@ struct ResultByGenre: Codable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
         case name
+    }
+}
+
+struct GenreSection {
+    let header: String
+    var items: [Item]
+}
+
+extension GenreSection: AnimatableSectionModelType {
+
+    typealias Item = ResultByGenre
+    typealias Identity = String
+    
+    init(original: GenreSection, items: [ResultByGenre]) {
+        self.items = items
+        self = original
+    }
+    var identity: String {
+        return header
     }
 }

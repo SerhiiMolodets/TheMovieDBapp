@@ -20,7 +20,6 @@ enum APIs: String {
     case getResultWithGenre = "https://api.themoviedb.org/3/discover/"
     case getImage = "https://image.tmdb.org/t/p/original"
     
-
     static func checkResponce(_ data: Data?, _ responce: URLResponse?, _ error: Error?, completionHandler: @escaping (Data) -> Void) {
         if error != nil {
             print("error")

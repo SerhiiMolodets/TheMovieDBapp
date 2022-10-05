@@ -8,13 +8,22 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class GenresViewModel {
+    // MARK: - List of movie genres
     var movieGenres = BehaviorRelay<[Genre]>(value: [])
-    var TVsByGenre: [ResultByGenre] = []
+    // MARK: - List of TV genres
     var tVGenres = BehaviorRelay<[Genre]>(value: [])
-    var movieOrTV = BehaviorRelay(value: 0)
-    var moviesByGenre: [ResultByGenre] = []
+    // MARK: - Create datasource for collectionView and configure cell
+    let dataSource = RxCollectionViewSectionedReloadDataSource<GenreSection> { _, collectionView, indexPath, item in
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCollectionViewCellId",
+                                                      for: indexPath) as! GenreCollectionViewCell
+        cell.configure(with: item)
+        return cell
+    }
+// MARK: - Observable array with results of request movie/TV for collectionView
+    var dataCollectionView = BehaviorRelay<[GenreSection]>(value: [GenreSection(header: "result", items: [])])
     
     let sourceDataTableView = PublishSubject<Observable<[Genre]>>()
 // MARK: - Get movie genres list to genreVM
@@ -36,19 +45,17 @@ class GenresViewModel {
         }
     }
     // MARK: - Get movies by genre to genreVM
-    func getMovieWith(genre: Int, _ completionHandler: @escaping () -> Void) {
-        GenresNetworkManager.shared.getMovies(with: String(genre)) { [weak self] movies in
+    func getMovieWith(genre: Int) {
+        GenresNetworkManager.shared.getMovies(with: String(genre)) { [weak self] resultsGenre in
             guard let self = self else { return }
-            self.moviesByGenre = movies
-            completionHandler()
+            self.dataCollectionView.accept([GenreSection(header: "movie result", items: resultsGenre)])
         }
     }
     // MARK: - Get TVs by genre to genreVM
-    func getTVsWith(genre: Int, _ completionHandler: @escaping () -> Void) {
-        GenresNetworkManager.shared.getTVs(with: String(genre)) { [weak self] movies in
+    func getTVsWith(genre: Int) {
+        GenresNetworkManager.shared.getTVs(with: String(genre)) { [weak self] resultsGenre in
             guard let self = self else { return }
-            self.TVsByGenre = movies
-            completionHandler()
+            self.dataCollectionView.accept([GenreSection(header: "TVs result", items: resultsGenre)])
         }
     }
 

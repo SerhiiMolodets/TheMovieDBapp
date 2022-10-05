@@ -23,21 +23,12 @@
                         <rect key="frame" x="116.5" y="222" width="37" height="37"/>
                         <color key="color" red="0.1318514697" green="1" blue="0.79792760839999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </activityIndicatorView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4i-C8-8i5">
-                        <rect key="frame" x="8" y="423.5" width="254" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="e4i-C8-8i5" secondAttribute="trailing" constant="8" id="ONk-1g-dhL"/>
-                <constraint firstItem="e4i-C8-8i5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="QGc-If-53r"/>
                 <constraint firstItem="7mG-Lh-6TM" firstAttribute="centerX" secondItem="Ym4-ZT-Wme" secondAttribute="centerX" id="RJj-0t-N13"/>
                 <constraint firstAttribute="bottom" secondItem="Ym4-ZT-Wme" secondAttribute="bottom" id="cGO-WU-IDg"/>
-                <constraint firstAttribute="bottom" secondItem="e4i-C8-8i5" secondAttribute="bottom" constant="16" id="lIP-KP-pgw"/>
                 <constraint firstItem="Ym4-ZT-Wme" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lTV-fo-bUc"/>
                 <constraint firstItem="7mG-Lh-6TM" firstAttribute="centerY" secondItem="Ym4-ZT-Wme" secondAttribute="centerY" constant="10.5" id="nKV-yB-UdF"/>
                 <constraint firstItem="Ym4-ZT-Wme" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="nXJ-s0-WMB"/>
@@ -47,7 +38,6 @@
             <connections>
                 <outlet property="indicator" destination="7mG-Lh-6TM" id="asd-h1-txX"/>
                 <outlet property="titleImageView" destination="Ym4-ZT-Wme" id="EWK-19-sH9"/>
-                <outlet property="titleLabel" destination="e4i-C8-8i5" id="BlA-Mt-EF7"/>
             </connections>
             <point key="canvasLocation" x="244.92753623188409" y="72.321428571428569"/>
         </collectionViewCell>

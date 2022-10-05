@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class GenreTableViewCell: UITableViewCell {
     var disposeBag = DisposeBag()
@@ -17,47 +18,41 @@ class GenreTableViewCell: UITableViewCell {
         didSet {
             genreCollectionView.register(UINib(nibName: "GenreCollectionViewCell", bundle: nil),
                                          forCellWithReuseIdentifier: "GenreCollectionViewCellId")
-            genreCollectionView.dataSource = self
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //        self.genresViewModel.movieOrTV.asObservable().subscribe { event in
-        //            print(event)
-        //        }.disposed(by: disposeBag)
+        bindToCollectionViewData()
+        genreCollectionView.rx.modelSelected(ResultByGenre.self)
+            .subscribe {print($0.element!.id) }.disposed(by: disposeBag)
+       
     }
+    
+        private func bindToCollectionViewData() {
+            genresViewModel.dataCollectionView
+                .asDriver()
+                .drive(genreCollectionView
+                    .rx
+                    .items(dataSource: genresViewModel.dataSource))
+                .disposed(by: disposeBag)
+        }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
     }
-    func configure(_ genre: Genre) {
+    func configure(_ genre: Genre, state segment: Int) {
         self.titleLabel.text = genre.name
-        self.genresViewModel.getMovieWith(genre: genre.id) { [weak self] in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.genreCollectionView.reloadData()
-            }
+
+        switch segment {
+        case 0:
+            genresViewModel.getMovieWith(genre: genre.id)
+        case 1:
+            genresViewModel.getTVsWith(genre: genre.id)
+        default:
+            fatalError("segment controll error")
         }
     }
     
-}
-
-extension GenreTableViewCell: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return genresViewModel.moviesByGenre.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCollectionViewCellId", for: indexPath) as! GenreCollectionViewCell
-        cell.configure(with: genresViewModel.moviesByGenre[indexPath.row],
-                       path: genresViewModel.moviesByGenre[indexPath.row].posterPath)
-        return cell
-    }
-    
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    //        let itemSize = (collectionView.frame.height - (collectionView.contentInset.top + collectionView.contentInset.bottom + 10)) / 3
-    //        return CGSize(width: itemSize, height: itemSize)
-    //    }
 }

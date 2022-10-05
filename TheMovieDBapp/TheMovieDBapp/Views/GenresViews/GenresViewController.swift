@@ -23,18 +23,18 @@ class GenresViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bindMoviesTableData()
-//        typeSegmentControl.rx.value.bind(to: genresViewModel.movieOrTV).disposed(by: disposeBag)??????
+        bindTableData()
     
     }
     
     // MARK: Connetct data and configure tableView
-    func bindMoviesTableData() {
+    func bindTableData() {
         //        Drive genres to table
         self.genresViewModel.sourceDataTableView.switchLatest().asDriver(onErrorJustReturn: [])
             .drive(self.genreTableView.rx.items(cellIdentifier: "GenreViewCellId",
-                                           cellType: GenreTableViewCell.self)) {_, genre, cell in
-                cell.configure(genre)
+                                           cellType: GenreTableViewCell.self)) {[weak self] _, genre, cell in
+                guard let self = self else { return }
+                cell.configure(genre, state: self.typeSegmentControl.selectedSegmentIndex)
             }.disposed(by: self.disposeBag)
         //        Update genres
         self.genresViewModel.updateMovieGenres()
@@ -52,14 +52,6 @@ class GenresViewController: UIViewController {
         
         }.disposed(by: disposeBag)
 
-        //        Bind a model selected handler
-        //        genreTableView.rx.modelSelected(Genre.self).bind { genre in
-        //            print(genre.name)
-        //        }.disposed(by: disposeBag)
-        
-    }
-    @IBAction func segmentControChanged(_ sender: Any) {
-     
     }
     
 }

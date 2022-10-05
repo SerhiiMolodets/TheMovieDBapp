@@ -162,9 +162,6 @@
                                     <segment title="Movie"/>
                                     <segment title="TV"/>
                                 </segments>
-                                <connections>
-                                    <action selector="segmentControChanged:" destination="u1M-8b-nWq" eventType="valueChanged" id="MC6-Mo-ifi"/>
-                                </connections>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rno-IG-zNn"/>

@@ -9,40 +9,35 @@ import UIKit
 
 class AuthenticationViewController: UIViewController {
     lazy var authenticationViewModel = AuthenticationViewModel()
+    @IBOutlet weak var logoImageView: UIImageView!
     
-    @IBOutlet weak var logoLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var guestInButton: UIButton!
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    let guestButtonTextAttributes: [NSAttributedString.Key: Any] = [
+          .font: UIFont.systemFont(ofSize: 12),
+          .foregroundColor: UIColor.white,
+          .underlineStyle: NSUnderlineStyle.single.rawValue
+      ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.layer.backgroundColor = UIColor(red: 0.012, green: 0.145, blue: 0.255, alpha: 1).cgColor
-        // MARK: - Comfigure logo label
-        let attachment = NSTextAttachment()
-        attachment.image = UIImage(named: "VectorLogo.png")
-        logoLabel.attributedText = NSAttributedString(attachment: attachment)
-
-        // MARK: - Comfigure userNameTextField
-        userNameTextField.addBottomBorder()
-        userNameTextField.attributedPlaceholder = NSAttributedString(
-            string: "User name*",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-        )
-        // MARK: - Comfigure passwordTextField
-        passwordTextField.addBottomBorder()
-        passwordTextField.attributedPlaceholder = NSAttributedString(
-            string: "Password*",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
-        )
-        // MARK: - Comfigure signInButton
-        signInButton.layer.cornerRadius = 18
-        signInButton.layerGradient()
-         
+        setupUI()
+        userNameTextField.delegate = self
+        passwordTextField.delegate = self
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 25, options: .allowAnimatedContent) {
+            self.logoImageView.center.y = self.view.frame.height / 2
+        }
     }
-    
+ 
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        signInButton.layerGradient()
+    }
     func bindAuthentication() {
         if authenticationViewModel.isLogin {
             DispatchQueue.main.async {
@@ -67,30 +62,46 @@ class AuthenticationViewController: UIViewController {
         }
 
     }
+// MARK: - Configure UI
+    private func setupUI() {
+        self.view.backgroundColor = UIColor(red: 0.023, green: 0.011, blue: 0.171, alpha: 1)
+        // MARK: - Configure logo view
+        logoImageView.image = UIImage(named: "logo.svg")
+
+        // MARK: - Configure userNameTextField
+        userNameTextField.layer.cornerRadius = 6
+        userNameTextField.layer.borderWidth = 1
+        userNameTextField.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5).cgColor
+
+        // MARK: - Configure passwordTextField
+        passwordTextField.layer.cornerRadius = 6
+        passwordTextField.layer.borderWidth = 1
+        passwordTextField.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5).cgColor
+        // MARK: - Configure signInButton
+        signInButton.layer.cornerRadius = 22
+        signInButton.layer.borderWidth = 1
+        signInButton.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5).cgColor
+        // MARK: - Configure gueastInButton
+        let attributeString = NSMutableAttributedString(
+           string: "Sign in as a Guest",
+           attributes: guestButtonTextAttributes
+        )
+        guestInButton.setAttributedTitle(attributeString, for: .normal)
+    }
     
 }
 
-extension UITextField {
-    func addBottomBorder() {
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0, y: self.frame.size.height - 1, width: self.frame.size.width, height: 1)
-        bottomLine.backgroundColor = UIColor.white.cgColor
-        borderStyle = .none
-        self.layer.masksToBounds = true
-        layer.addSublayer(bottomLine)
-    }
-}
+extension AuthenticationViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
-extension UIView {
-    func layerGradient() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame.size = self.frame.size
-        gradientLayer.colors =
-        [UIColor(red: 0.392, green: 0.824, blue: 0.675, alpha: 1).cgColor,
-          UIColor(red: 0.31, green: 0.702, blue: 0.875, alpha: 1).cgColor]
-        self.layer.masksToBounds = true
-        gradientLayer.startPoint = CGPoint(x: 0.25, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 0.75, y: 0.5)
-        self.layer.insertSublayer(gradientLayer, at: 0)
+        if let text = textField.text,
+            !text.isEmpty {
+            signInButton.layerGradient()
+            textField.addBorderGradient()
+            textField.layer.borderWidth = 0
+
+        }
+
+        return true
     }
 }

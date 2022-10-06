@@ -25,6 +25,7 @@
 		084BF81528E5C2DD001E3AB9 /* GenresNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084BF81428E5C2DD001E3AB9 /* GenresNetworkManager.swift */; };
 		084BF81828E621CB001E3AB9 /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084BF81628E621CB001E3AB9 /* GenreCollectionViewCell.swift */; };
 		084BF81928E621CB001E3AB9 /* GenreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 084BF81728E621CB001E3AB9 /* GenreCollectionViewCell.xib */; };
+		086CC05528EF2C6E00EB6B63 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086CC05428EF2C6E00EB6B63 /* UIExtensions.swift */; };
 		086E14DB28E0C3A400502117 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086E14DA28E0C3A400502117 /* AuthenticationViewModel.swift */; };
 		08F9DFBD28EA1334004F590C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 08F9DFBC28EA1334004F590C /* Podfile */; };
 		4A380AE1544C3A200C31F4D7 /* Pods_TheMovieDBapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA8203D5A4BC43DE7B8DFA1 /* Pods_TheMovieDBapp.framework */; };
@@ -51,6 +52,7 @@
 		084BF81428E5C2DD001E3AB9 /* GenresNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresNetworkManager.swift; sourceTree = "<group>"; };
 		084BF81628E621CB001E3AB9 /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
 		084BF81728E621CB001E3AB9 /* GenreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreCollectionViewCell.xib; sourceTree = "<group>"; };
+		086CC05428EF2C6E00EB6B63 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		086E14DA28E0C3A400502117 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		08F9DFBC28EA1334004F590C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		1FA8203D5A4BC43DE7B8DFA1 /* Pods_TheMovieDBapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieDBapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +103,7 @@
 				0817B27828DDE47F0060DBFA /* Assets.xcassets */,
 				0817B27D28DDE47F0060DBFA /* Info.plist */,
 				08F9DFBC28EA1334004F590C /* Podfile */,
+				086CC05428EF2C6E00EB6B63 /* UIExtensions.swift */,
 			);
 			path = TheMovieDBapp;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				084BF80A28E5A88C001E3AB9 /* GenresViewController.swift in Sources */,
 				084BF80E28E5AA7F001E3AB9 /* GenresModels.swift in Sources */,
 				086E14DB28E0C3A400502117 /* AuthenticationViewModel.swift in Sources */,
+				086CC05528EF2C6E00EB6B63 /* UIExtensions.swift in Sources */,
 				0817B28428DE07E20060DBFA /* AuthNetworkManager.swift in Sources */,
 				084694A128E1F45B003ACE30 /* Constans.swift in Sources */,
 				0817B27428DDE47E0060DBFA /* AuthenticationViewController.swift in Sources */,

@@ -5,7 +5,7 @@
 //  Created by Сергей Молодец on 26.09.2022.
 //
 
-import Foundation
+import UIKit
 
 enum APIs: String {
     case apiKey = "07170e6cdbaa64696a3226a414ea7d8d"
@@ -40,4 +40,10 @@ enum HTTPMethod: String {
     case POST
     case PUT
     case DELETE
+}
+
+struct GradientColors {
+    static let start = UIColor(red: 0.453, green: 0.392, blue: 0.824, alpha: 1).cgColor
+    static let end = UIColor(red: 0.31, green: 0.702, blue: 0.875, alpha: 1).cgColor
+    
 }

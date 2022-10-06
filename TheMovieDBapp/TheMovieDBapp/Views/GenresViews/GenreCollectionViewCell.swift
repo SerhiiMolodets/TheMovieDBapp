@@ -11,11 +11,13 @@ import SDWebImage
 class GenreCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleImageView: UIImageView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-    private var path: String?
+    @IBOutlet weak var containerView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        containerView.clipsToBounds = true
+        containerView.layer.cornerRadius = 20
+        
     }
     override func prepareForReuse() {
         titleImageView.image = nil

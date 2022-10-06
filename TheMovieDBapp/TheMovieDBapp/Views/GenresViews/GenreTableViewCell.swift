@@ -25,7 +25,6 @@ class GenreTableViewCell: UITableViewCell {
         bindToCollectionViewData()
         genreCollectionView.rx.modelSelected(ResultByGenre.self)
             .subscribe {print($0.element!.id) }.disposed(by: disposeBag)
-       
     }
     
         private func bindToCollectionViewData() {

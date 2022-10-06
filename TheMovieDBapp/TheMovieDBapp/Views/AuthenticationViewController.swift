@@ -15,10 +15,7 @@ class AuthenticationViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var guestInButton: UIButton!
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
+
     let guestButtonTextAttributes: [NSAttributedString.Key: Any] = [
           .font: UIFont.systemFont(ofSize: 12),
           .foregroundColor: UIColor.white,

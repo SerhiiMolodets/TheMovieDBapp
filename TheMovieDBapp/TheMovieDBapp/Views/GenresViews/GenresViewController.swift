@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 class GenresViewController: UIViewController {
+ 
     let genresViewModel = GenresViewModel()
     var disposeBag = DisposeBag()
     
@@ -22,7 +23,8 @@ class GenresViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        typeSegmentControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+        typeSegmentControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         bindTableData()
     
     }

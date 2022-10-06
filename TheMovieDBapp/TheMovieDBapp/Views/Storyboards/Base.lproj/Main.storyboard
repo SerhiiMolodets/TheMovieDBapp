@@ -12,6 +12,7 @@
         <scene sceneID="48j-LE-kKz">
             <objects>
                 <navigationController storyboardIdentifier="firstNavControllerId" id="8i6-LE-G49" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LTk-IA-dwg">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -178,20 +179,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="400" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qik-vL-wEe">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="240" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qik-vL-wEe">
                                 <rect key="frame" x="0.0" y="119" width="414" height="694"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OLH-ux-FfV">
                                 <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <color key="backgroundColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
-                                    <segment title="Movie"/>
-                                    <segment title="TV"/>
+                                    <segment title="Movies"/>
+                                    <segment title="TV shows"/>
                                 </segments>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedSegmentTintColor" red="0.42745098469999998" green="0.46666663889999999" blue="0.8156862855" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rno-IG-zNn"/>
-                        <color key="backgroundColor" red="0.012" green="0.14499999999999999" blue="0.255" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="OLH-ux-FfV" firstAttribute="top" secondItem="rno-IG-zNn" secondAttribute="top" id="79q-vA-5W3"/>
                             <constraint firstItem="rno-IG-zNn" firstAttribute="trailing" secondItem="OLH-ux-FfV" secondAttribute="trailing" id="KlE-re-zQa"/>
@@ -203,7 +207,9 @@
                             <constraint firstItem="OLH-ux-FfV" firstAttribute="leading" secondItem="rno-IG-zNn" secondAttribute="leading" id="ind-Gr-Wxd"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Genres" image="film" catalog="system" id="Ur0-iO-C0N"/>
+                    <tabBarItem key="tabBarItem" title="Genres" image="film" catalog="system" id="Ur0-iO-C0N">
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" title="Title" id="avo-BX-Wsi"/>
                     <connections>
                         <outlet property="genreTableView" destination="qik-vL-wEe" id="LIj-cN-JfV"/>
@@ -219,13 +225,29 @@
             <objects>
                 <tabBarController storyboardIdentifier="tabBarControllerID" id="6Q9-2O-zFU" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="qPA-CB-Wpz">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="v5f-De-KyM">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RNI-IN-E0q">
+                                <rect key="frame" x="20" y="0.0" width="154" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="logo"/>
+                                <buttonConfiguration key="configuration" style="plain" image="logo" imagePlacement="leading">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="small"/>
+                                </buttonConfiguration>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="nHe-pe-2SJ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="hEN-1C-Gec">
                                 <rect key="frame" x="302" y="5" width="92" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Log out"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign Out">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                    <color key="baseForegroundColor" red="0.41568624970000001" green="0.67058825489999996" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
                             </button>
+                            <color key="tintColor" red="0.41568624970000001" green="0.67058825489999996" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -246,6 +268,7 @@
     </scenes>
     <resources>
         <image name="film" catalog="system" width="128" height="93"/>
+        <image name="logo" width="130" height="31"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

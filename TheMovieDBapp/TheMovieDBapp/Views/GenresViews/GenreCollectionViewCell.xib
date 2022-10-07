@@ -26,15 +26,32 @@
                                 <rect key="frame" x="51.5" y="75" width="37" height="37"/>
                                 <color key="color" red="0.41568624970000001" green="0.67058825489999996" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </activityIndicatorView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Fx8-CV-67k">
+                                <rect key="frame" x="6" y="6" width="36.5" height="12"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="gI1-ik-Gj0">
+                                        <rect key="frame" x="0.0" y="1" width="10" height="10"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5X-Lh-0v8">
+                                        <rect key="frame" x="10" y="0.0" width="26.5" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.60249379139072845" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Ym4-ZT-Wme" firstAttribute="top" secondItem="hlX-30-mWh" secondAttribute="top" id="2B3-ku-r7I"/>
                             <constraint firstItem="7mG-Lh-6TM" firstAttribute="centerY" secondItem="hlX-30-mWh" secondAttribute="centerY" id="6XU-TB-8vr"/>
                             <constraint firstAttribute="trailing" secondItem="Ym4-ZT-Wme" secondAttribute="trailing" id="CuH-6y-S7k"/>
+                            <constraint firstItem="Fx8-CV-67k" firstAttribute="top" secondItem="Ym4-ZT-Wme" secondAttribute="top" constant="6" id="MFc-9H-nUR"/>
                             <constraint firstItem="7mG-Lh-6TM" firstAttribute="centerX" secondItem="hlX-30-mWh" secondAttribute="centerX" id="OXu-Q1-ab5"/>
                             <constraint firstAttribute="bottom" secondItem="Ym4-ZT-Wme" secondAttribute="bottom" id="ajV-Ay-wzS"/>
                             <constraint firstItem="Ym4-ZT-Wme" firstAttribute="leading" secondItem="hlX-30-mWh" secondAttribute="leading" id="b29-pQ-u7W"/>
+                            <constraint firstItem="Fx8-CV-67k" firstAttribute="leading" secondItem="Ym4-ZT-Wme" secondAttribute="leading" constant="6" id="iPd-7c-3xT"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -50,9 +67,14 @@
             <connections>
                 <outlet property="containerView" destination="hlX-30-mWh" id="oLP-Pc-bzu"/>
                 <outlet property="indicator" destination="7mG-Lh-6TM" id="asd-h1-txX"/>
+                <outlet property="raitingLabel" destination="w5X-Lh-0v8" id="6EL-Ni-EKB"/>
+                <outlet property="raitingStackView" destination="Fx8-CV-67k" id="JeZ-dD-LzP"/>
                 <outlet property="titleImageView" destination="Ym4-ZT-Wme" id="EWK-19-sH9"/>
             </connections>
-            <point key="canvasLocation" x="244.92753623188409" y="72.321428571428569"/>
+            <point key="canvasLocation" x="244.92753623188409" y="71.986607142857139"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="Star" width="10" height="10"/>
+    </resources>
 </document>

@@ -155,17 +155,42 @@
             </objects>
             <point key="canvasLocation" x="-804" y="78"/>
         </scene>
-        <!--Item 2-->
+        <!--Search View Controller-->
         <scene sceneID="w3M-Xv-eKS">
             <objects>
-                <viewController id="mfr-6e-1Sn" sceneMemberID="viewController">
+                <viewController id="mfr-6e-1Sn" customClass="SearchViewController" customModule="TheMovieDBapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TEx-ge-brB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="W0x-hP-SIV">
+                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
+                                <color key="barTintColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="500" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mRC-w4-yAF">
+                                <rect key="frame" x="0.0" y="139" width="414" height="674"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="PRM-KO-h8v"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="W0x-hP-SIV" firstAttribute="trailing" secondItem="PRM-KO-h8v" secondAttribute="trailing" id="5uW-GE-ydo"/>
+                            <constraint firstItem="PRM-KO-h8v" firstAttribute="bottom" secondItem="mRC-w4-yAF" secondAttribute="bottom" id="XRB-xB-tm8"/>
+                            <constraint firstItem="mRC-w4-yAF" firstAttribute="top" secondItem="W0x-hP-SIV" secondAttribute="bottom" id="gKE-2A-jq3"/>
+                            <constraint firstItem="W0x-hP-SIV" firstAttribute="top" secondItem="PRM-KO-h8v" secondAttribute="top" id="m0N-cg-ghP"/>
+                            <constraint firstItem="W0x-hP-SIV" firstAttribute="leading" secondItem="PRM-KO-h8v" secondAttribute="leading" id="rU5-hA-huQ"/>
+                            <constraint firstItem="mRC-w4-yAF" firstAttribute="leading" secondItem="PRM-KO-h8v" secondAttribute="leading" id="tJG-mP-jss"/>
+                            <constraint firstItem="PRM-KO-h8v" firstAttribute="trailing" secondItem="mRC-w4-yAF" secondAttribute="trailing" id="vEt-9W-mfr"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="EaN-u2-aXw"/>
+                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="EaN-u2-aXw"/>
+                    <connections>
+                        <outlet property="searchField" destination="W0x-hP-SIV" id="f9Q-I2-k1J"/>
+                        <outlet property="serachTableView" destination="mRC-w4-yAF" id="ce4-qG-96S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GI2-lh-HLO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -184,7 +209,7 @@
                                 <color key="backgroundColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OLH-ux-FfV">
-                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <rect key="frame" x="4" y="88" width="406" height="32"/>
                                 <color key="backgroundColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="Movies"/>
@@ -198,16 +223,16 @@
                         <color key="backgroundColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="OLH-ux-FfV" firstAttribute="top" secondItem="rno-IG-zNn" secondAttribute="top" id="79q-vA-5W3"/>
-                            <constraint firstItem="rno-IG-zNn" firstAttribute="trailing" secondItem="OLH-ux-FfV" secondAttribute="trailing" id="KlE-re-zQa"/>
+                            <constraint firstItem="rno-IG-zNn" firstAttribute="trailing" secondItem="OLH-ux-FfV" secondAttribute="trailing" constant="4" id="KlE-re-zQa"/>
                             <constraint firstItem="qik-vL-wEe" firstAttribute="bottom" secondItem="rno-IG-zNn" secondAttribute="bottom" id="Nod-HV-i7u"/>
                             <constraint firstItem="qik-vL-wEe" firstAttribute="top" secondItem="OLH-ux-FfV" secondAttribute="bottom" id="U2P-bu-J7V"/>
                             <constraint firstItem="qik-vL-wEe" firstAttribute="leading" secondItem="rno-IG-zNn" secondAttribute="leading" id="VoX-Ha-vDI"/>
                             <constraint firstItem="qik-vL-wEe" firstAttribute="trailing" secondItem="rno-IG-zNn" secondAttribute="trailing" id="ggY-OI-if5"/>
                             <constraint firstItem="qik-vL-wEe" firstAttribute="top" secondItem="OLH-ux-FfV" secondAttribute="bottom" id="igv-JU-QFX"/>
-                            <constraint firstItem="OLH-ux-FfV" firstAttribute="leading" secondItem="rno-IG-zNn" secondAttribute="leading" id="ind-Gr-Wxd"/>
+                            <constraint firstItem="OLH-ux-FfV" firstAttribute="leading" secondItem="rno-IG-zNn" secondAttribute="leading" constant="4" id="ind-Gr-Wxd"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Genres" image="film" catalog="system" id="Ur0-iO-C0N">
+                    <tabBarItem key="tabBarItem" title="" image="film" catalog="system" id="Ur0-iO-C0N">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Title" id="avo-BX-Wsi"/>
@@ -232,7 +257,7 @@
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="logo"/>
-                                <buttonConfiguration key="configuration" style="plain" image="logo" imagePlacement="leading">
+                                <buttonConfiguration key="configuration" style="plain" image="logo" imagePlacement="leading" buttonSize="small">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="small"/>
                                 </buttonConfiguration>
                             </button>
@@ -255,6 +280,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.41568624970000001" green="0.67058825489999996" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="u1M-8b-nWq" kind="relationship" relationship="viewControllers" id="hw4-Jc-2Bi"/>
@@ -269,6 +302,7 @@
     <resources>
         <image name="film" catalog="system" width="128" height="93"/>
         <image name="logo" width="130" height="31"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

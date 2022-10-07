@@ -19,6 +19,7 @@ enum APIs: String {
     case getTVsGenreList = "https://api.themoviedb.org/3/genre/tv/list"
     case getResultWithGenre = "https://api.themoviedb.org/3/discover/"
     case getImage = "https://image.tmdb.org/t/p/original"
+    case searchMovie = "https://api.themoviedb.org/3/search/movie"
     
     static func checkResponce(_ data: Data?, _ responce: URLResponse?, _ error: Error?, completionHandler: @escaping (Data) -> Void) {
         if error != nil {
@@ -46,4 +47,10 @@ struct GradientColors {
     static let start = UIColor(red: 0.453, green: 0.392, blue: 0.824, alpha: 1).cgColor
     static let end = UIColor(red: 0.31, green: 0.702, blue: 0.875, alpha: 1).cgColor
     
+}
+
+enum SearchError: Error {
+    case underlyingError(Error)
+    case notFound
+    case unkowned
 }

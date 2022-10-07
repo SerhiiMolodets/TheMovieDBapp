@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="394"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hgk-Py-BGw">
-                                <rect key="frame" x="0.0" y="51.5" width="320" height="342.5"/>
+                                <rect key="frame" x="0.0" y="35.5" width="320" height="358.5"/>
                                 <color key="backgroundColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2nx-Wy-yJX">
                                     <size key="itemSize" width="125" height="187"/>
@@ -30,7 +30,7 @@
                                 </collectionViewFlowLayout>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5B-ER-GM5">
-                                <rect key="frame" x="0.0" y="16" width="320" height="19.5"/>
+                                <rect key="frame" x="8" y="16" width="304" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -38,11 +38,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="o5B-ER-GM5" firstAttribute="leading" secondItem="Phn-7V-wtb" secondAttribute="leading" id="1dI-er-72h"/>
-                            <constraint firstAttribute="trailing" secondItem="o5B-ER-GM5" secondAttribute="trailing" id="5hP-xD-FO3"/>
+                            <constraint firstItem="o5B-ER-GM5" firstAttribute="leading" secondItem="Phn-7V-wtb" secondAttribute="leading" constant="8" id="1dI-er-72h"/>
+                            <constraint firstAttribute="trailing" secondItem="o5B-ER-GM5" secondAttribute="trailing" constant="8" id="5hP-xD-FO3"/>
                             <constraint firstItem="o5B-ER-GM5" firstAttribute="top" secondItem="Phn-7V-wtb" secondAttribute="top" constant="16" id="6z8-Tt-Hlf"/>
                             <constraint firstAttribute="trailing" secondItem="hgk-Py-BGw" secondAttribute="trailing" id="WQU-5W-2zF"/>
-                            <constraint firstItem="hgk-Py-BGw" firstAttribute="top" secondItem="o5B-ER-GM5" secondAttribute="bottom" constant="16" id="Z3U-Pm-8lW"/>
+                            <constraint firstItem="hgk-Py-BGw" firstAttribute="top" secondItem="o5B-ER-GM5" secondAttribute="bottom" id="Z3U-Pm-8lW"/>
                             <constraint firstItem="hgk-Py-BGw" firstAttribute="leading" secondItem="Phn-7V-wtb" secondAttribute="leading" id="hpB-FS-Y9Z"/>
                             <constraint firstAttribute="bottom" secondItem="hgk-Py-BGw" secondAttribute="bottom" id="tqU-Nk-P3D"/>
                         </constraints>

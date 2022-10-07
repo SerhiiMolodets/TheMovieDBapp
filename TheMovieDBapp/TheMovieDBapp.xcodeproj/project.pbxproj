@@ -25,6 +25,12 @@
 		084BF81528E5C2DD001E3AB9 /* GenresNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084BF81428E5C2DD001E3AB9 /* GenresNetworkManager.swift */; };
 		084BF81828E621CB001E3AB9 /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084BF81628E621CB001E3AB9 /* GenreCollectionViewCell.swift */; };
 		084BF81928E621CB001E3AB9 /* GenreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 084BF81728E621CB001E3AB9 /* GenreCollectionViewCell.xib */; };
+		0859819E28F0470000A18C56 /* SearchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0859819D28F0470000A18C56 /* SearchModels.swift */; };
+		085981A028F0472200A18C56 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0859819F28F0472200A18C56 /* SearchViewController.swift */; };
+		085981A228F052E200A18C56 /* SearchNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085981A128F052E200A18C56 /* SearchNetworkManager.swift */; };
+		085981C428F09A9400A18C56 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085981C328F09A9400A18C56 /* SearchViewModel.swift */; };
+		085981C728F0BC9C00A18C56 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085981C528F0BC9C00A18C56 /* SearchTableViewCell.swift */; };
+		085981C828F0BC9C00A18C56 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085981C628F0BC9C00A18C56 /* SearchTableViewCell.xib */; };
 		086CC05528EF2C6E00EB6B63 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086CC05428EF2C6E00EB6B63 /* UIExtensions.swift */; };
 		086E14DB28E0C3A400502117 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086E14DA28E0C3A400502117 /* AuthenticationViewModel.swift */; };
 		08F9DFBD28EA1334004F590C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 08F9DFBC28EA1334004F590C /* Podfile */; };
@@ -52,6 +58,12 @@
 		084BF81428E5C2DD001E3AB9 /* GenresNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresNetworkManager.swift; sourceTree = "<group>"; };
 		084BF81628E621CB001E3AB9 /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
 		084BF81728E621CB001E3AB9 /* GenreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreCollectionViewCell.xib; sourceTree = "<group>"; };
+		0859819D28F0470000A18C56 /* SearchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModels.swift; sourceTree = "<group>"; };
+		0859819F28F0472200A18C56 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		085981A128F052E200A18C56 /* SearchNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNetworkManager.swift; sourceTree = "<group>"; };
+		085981C328F09A9400A18C56 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		085981C528F0BC9C00A18C56 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		085981C628F0BC9C00A18C56 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		086CC05428EF2C6E00EB6B63 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		086E14DA28E0C3A400502117 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		08F9DFBC28EA1334004F590C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
@@ -114,6 +126,7 @@
 				0817B28628DE300D0060DBFA /* APIsModels.swift */,
 				084694A228E35086003ACE30 /* AccountModels.swift */,
 				084BF80D28E5AA7F001E3AB9 /* GenresModels.swift */,
+				0859819D28F0470000A18C56 /* SearchModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -135,15 +148,35 @@
 			children = (
 				0817B28328DE07E20060DBFA /* AuthNetworkManager.swift */,
 				084BF81428E5C2DD001E3AB9 /* GenresNetworkManager.swift */,
+				085981A128F052E200A18C56 /* SearchNetworkManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		0859819B28F01CD200A18C56 /* Authenticationviews */ = {
+			isa = PBXGroup;
+			children = (
+				0817B27328DDE47E0060DBFA /* AuthenticationViewController.swift */,
+			);
+			path = Authenticationviews;
+			sourceTree = "<group>";
+		};
+		0859819C28F046CD00A18C56 /* SearchViews */ = {
+			isa = PBXGroup;
+			children = (
+				0859819F28F0472200A18C56 /* SearchViewController.swift */,
+				085981C528F0BC9C00A18C56 /* SearchTableViewCell.swift */,
+				085981C628F0BC9C00A18C56 /* SearchTableViewCell.xib */,
+			);
+			path = SearchViews;
 			sourceTree = "<group>";
 		};
 		086E14D728E0C2AB00502117 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0859819C28F046CD00A18C56 /* SearchViews */,
 				084BF80828E5A6D5001E3AB9 /* GenresViews */,
-				0817B27328DDE47E0060DBFA /* AuthenticationViewController.swift */,
+				0859819B28F01CD200A18C56 /* Authenticationviews */,
 				086E14D928E0C2DD00502117 /* Storyboards */,
 			);
 			path = Views;
@@ -154,6 +187,7 @@
 			children = (
 				086E14DA28E0C3A400502117 /* AuthenticationViewModel.swift */,
 				084BF80B28E5A9BD001E3AB9 /* GenresViewModel.swift */,
+				085981C328F09A9400A18C56 /* SearchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -249,6 +283,7 @@
 				0817B27C28DDE47F0060DBFA /* LaunchScreen.storyboard in Resources */,
 				0817B27928DDE47F0060DBFA /* Assets.xcassets in Resources */,
 				084BF81928E621CB001E3AB9 /* GenreCollectionViewCell.xib in Resources */,
+				085981C828F0BC9C00A18C56 /* SearchTableViewCell.xib in Resources */,
 				0817B27728DDE47E0060DBFA /* Main.storyboard in Resources */,
 				084BF81228E5B425001E3AB9 /* GenreTableViewCell.xib in Resources */,
 			);
@@ -323,11 +358,16 @@
 				084BF80A28E5A88C001E3AB9 /* GenresViewController.swift in Sources */,
 				084BF80E28E5AA7F001E3AB9 /* GenresModels.swift in Sources */,
 				086E14DB28E0C3A400502117 /* AuthenticationViewModel.swift in Sources */,
+				085981A028F0472200A18C56 /* SearchViewController.swift in Sources */,
+				085981C428F09A9400A18C56 /* SearchViewModel.swift in Sources */,
 				086CC05528EF2C6E00EB6B63 /* UIExtensions.swift in Sources */,
 				0817B28428DE07E20060DBFA /* AuthNetworkManager.swift in Sources */,
 				084694A128E1F45B003ACE30 /* Constans.swift in Sources */,
 				0817B27428DDE47E0060DBFA /* AuthenticationViewController.swift in Sources */,
+				085981C728F0BC9C00A18C56 /* SearchTableViewCell.swift in Sources */,
+				0859819E28F0470000A18C56 /* SearchModels.swift in Sources */,
 				084BF81828E621CB001E3AB9 /* GenreCollectionViewCell.swift in Sources */,
+				085981A228F052E200A18C56 /* SearchNetworkManager.swift in Sources */,
 				084694A328E35086003ACE30 /* AccountModels.swift in Sources */,
 				0817B27028DDE47E0060DBFA /* AppDelegate.swift in Sources */,
 				0817B28728DE300D0060DBFA /* APIsModels.swift in Sources */,

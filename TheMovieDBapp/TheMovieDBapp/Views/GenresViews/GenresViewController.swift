@@ -23,6 +23,8 @@ class GenresViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UITabBar.appearance().barTintColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 0.5)
+        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 0.5)
         typeSegmentControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
         typeSegmentControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         bindTableData()

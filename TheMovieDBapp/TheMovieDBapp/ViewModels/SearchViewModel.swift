@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class SearchViewModel {
     private let disposeBag = DisposeBag()
@@ -16,6 +17,7 @@ class SearchViewModel {
     var searchObserver: AnyObserver<String> {
         return searchSubject.asObserver()
     }
+    var historyOfSearch = BehaviorRelay<[String]>(value: Array(repeating: "", count: 10))
      
     // outputs
     private let loadingSubject = PublishSubject<Bool>()
@@ -30,13 +32,16 @@ class SearchViewModel {
             .asDriver(onErrorJustReturn: SearchError.unkowned)
     }
 
-    private let contentSubject = PublishSubject<[ResultSearch]>()
-    var content: Driver<[ResultSearch]> {
+    private let contentSubject = PublishSubject<[ResultByGenre]>()
+    var content: Driver<[ResultByGenre]> {
         return contentSubject
             .asDriver(onErrorJustReturn: [])
     }
     
-    func search(byTerm term: String) -> Observable<[ResultSearch]> {
+    func search(byTerm term: String) -> Observable<[ResultByGenre]> {
+        var bufferArray = historyOfSearch.value
+        bufferArray.dropLast()
+        bufferArray.insert(term, at: 0)
         return SearchNetworkManger.shared.searchAPI(movie: term)
     }
     
@@ -46,7 +51,7 @@ class SearchViewModel {
             .filter { !$0.isEmpty }
             .distinctUntilChanged()
             .debounce(.seconds(3), scheduler: MainScheduler.instance)
-            .flatMapLatest { [weak self] term -> Observable<[ResultSearch]> in
+            .flatMapLatest { [weak self] term -> Observable<[ResultByGenre]> in
                 guard let self = self else { return Observable.empty() }
                 // every new try to search, the error signal will
                 // emit nil to hide the error view
@@ -54,7 +59,7 @@ class SearchViewModel {
                 // switch to loading mode
                 self.loadingSubject.onNext(true)
                 return self.search(byTerm: term)
-                    .catch { [weak self] error -> Observable<[ResultSearch]> in
+                    .catch { [weak self] error -> Observable<[ResultByGenre]> in
                         guard let self = self else { return Observable.empty() }
                         self.errorSubject.onNext(SearchError.underlyingError(error))
                         return Observable.empty()
@@ -73,4 +78,3 @@ class SearchViewModel {
     }
     
 }
-

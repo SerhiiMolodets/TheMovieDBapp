@@ -11,7 +11,7 @@ import RxSwift
 class SearchNetworkManger {
     static let shared = SearchNetworkManger()
     
-    func searchAPI(movie: String) -> Observable<[ResultSearch]> {
+    func searchAPI(movie: String) -> Observable<[ResultByGenre]> {
         return Observable.create { observer in
             let url = URL(string: APIs.searchMovie.rawValue)!
             var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
@@ -22,7 +22,7 @@ class SearchNetworkManger {
            dataTask =  URLSession.shared.dataTask(with: queryURL) { (data, responce, error) in
                 
                 APIs.checkResponce(data, responce, error, completionHandler: { responceData in
-                    do { let movies = try JSONDecoder().decode(SearchMovie.self, from: responceData)
+                    do { let movies = try JSONDecoder().decode(MoviesByGenre.self, from: responceData)
                         observer.onNext(movies.results)
                     } catch {
                         observer.onError(error)

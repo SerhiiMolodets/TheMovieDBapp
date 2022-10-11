@@ -10,18 +10,21 @@ import RxSwift
 import RxCocoa
 
 class SearchViewController: UIViewController {
-    @IBOutlet weak var serachTableView: UITableView! {
+    @IBOutlet weak var searchTableView: UITableView! {
         didSet {
-            serachTableView.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchCellId")
+            searchTableView.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchCellId")
+            searchTableView.register(UITableViewCell.self, forCellReuseIdentifier: "historyCellId")
         }
     }
+    @IBOutlet weak var errorLabel: UILabel!
     
     @IBOutlet weak var searchField: UISearchBar!
     let searchVm = SearchViewModel()
     private let disposeBag = DisposeBag()
     
     var errorView: UIView? {
-        return nil
+        errorLabel.text = "Not found"
+        return errorLabel
     }
     
     var loadingView: UIView? {
@@ -35,25 +38,26 @@ class SearchViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 0.5)
         errorView?.isHidden = true
         loadingView?.isHidden = true
+        searchTableView.backgroundColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 1)
     }
     
     private func bindToSearchVM() {
         
-        //binding entry search to searchVm
+        // binding entry search to searchVm
         searchField
             .rx
             .text
             .orEmpty
-            .throttle(.seconds(5), scheduler: MainScheduler.instance)
+
             .distinctUntilChanged()
             .bind(to: searchVm.searchObserver)
             .disposed(by: disposeBag)
         
-        searchVm.isLoading.asDriver().drive(serachTableView.rx.isHidden).disposed(by: disposeBag)
+        searchVm.isLoading.asDriver().drive(searchTableView.rx.isHidden).disposed(by: disposeBag)
         
         searchVm.error
             .map { $0 != nil }
-            .drive(serachTableView.rx.isHidden)
+            .drive(searchTableView.rx.isHidden)
             .disposed(by: disposeBag)
         
         if let loadingView = loadingView {
@@ -67,19 +71,25 @@ class SearchViewController: UIViewController {
                 .disposed(by: disposeBag)
         }
         if let errorView = errorView {
-                searchVm.error
-                    .map { $0 == nil }
-                    .drive(errorView.rx.isHidden)
-                    .disposed(by: disposeBag)
-            }
+            searchVm.error
+                .map { $0 == nil }
+                .drive(errorView.rx.isHidden)
+                .disposed(by: disposeBag)
+        }
     }
     
     func setupObservers() {
-        searchVm.content
-            .drive(serachTableView.rx.items(cellIdentifier: "SearchCellId", cellType: SearchTableViewCell.self)) {_, movie, cell in
-                cell.configure(with: movie)
+        searchField.rx.text.orEmpty.subscribe { text in
+            if let zero = text.element?.isEmpty,
+            zero {
+                print(0)
+            } else {
                 
+            }
+        }.disposed(by: disposeBag)
+        searchVm.content
+            .drive(searchTableView.rx.items(cellIdentifier: "SearchCellId", cellType: SearchTableViewCell.self)) {_, movie, cell in
+                cell.configure(with: movie)
             }.disposed(by: disposeBag)
-    
-}
+    }
 }

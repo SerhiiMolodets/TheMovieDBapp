@@ -13,10 +13,12 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var textStack: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         posterView.layer.cornerRadius = 30
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -25,7 +27,7 @@ class SearchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(with movie: ResultSearch) {
+    func configure(with movie: ResultByGenre) {
         self.titleLabel.text = movie.title
         self.overviewLabel.text = movie.overview
         guard let poster = movie.posterPath else { return }

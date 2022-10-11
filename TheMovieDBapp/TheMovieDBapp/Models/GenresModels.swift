@@ -44,8 +44,9 @@ struct ResultByGenre: Codable, IdentifiableType, Equatable {
     let name: String?
     let overview: String
     let popularity: Double
-    let posterPath: String
+    let posterPath: String?
     let title: String?
+    let video: Bool?
     let voteAverage: Double
     let voteCount: Int
 
@@ -59,6 +60,7 @@ struct ResultByGenre: Codable, IdentifiableType, Equatable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
         case name
+        case video
     }
 }
 

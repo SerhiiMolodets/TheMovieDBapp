@@ -25,10 +25,11 @@ class GenreCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         titleImageView.image = nil
     }
-    
+
     func configure(with movieByGenre: ResultByGenre) {
         indicator.startAnimating()
-        self.titleImageView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + movieByGenre.posterPath)), completed: { [weak self] _, _, _, _ in
+        self.titleImageView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + (movieByGenre.posterPath ?? ""))),
+                                        completed: { [weak self] _, _, _, _ in
             guard let self = self else { return }
             self.indicator.stopAnimating()
             self.raitingLabel.text = " \(movieByGenre.voteAverage) "

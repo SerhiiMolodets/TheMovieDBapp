@@ -91,12 +91,15 @@ class AuthenticationViewController: UIViewController {
 extension AuthenticationViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
-        if let text = textField.text,
-            !text.isEmpty {
+        if let usernameText = userNameTextField.text,
+           let passwordText = passwordTextField.text,
+            !usernameText.isEmpty,
+            !passwordText.isEmpty {
             signInButton.layerGradient()
-            textField.addBorderGradient()
-            textField.layer.borderWidth = 0
-
+            userNameTextField.addBorderGradient()
+            passwordTextField.addBorderGradient()
+            userNameTextField.layer.borderWidth = 0
+            passwordTextField.layer.borderWidth = 0
         }
 
         return true

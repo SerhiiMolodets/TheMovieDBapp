@@ -23,8 +23,16 @@ class GenreTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         bindToCollectionViewData()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+// send data to next screen
         genreCollectionView.rx.modelSelected(ResultByGenre.self)
-            .subscribe {print($0.element!.id) }.disposed(by: disposeBag)
+            .subscribe { movie in
+                if let detailViewController = storyboard.instantiateViewController(identifier: "MoviewDetailViewControllerId")
+                    as? MoviewDetailViewController {
+                    detailViewController.movieDetailViewModel = MoviewDetailViewModel(movie: movie.element!)
+                    self.parentViewController?.navigationController?.pushViewController(detailViewController, animated: true)
+                }
+            }.disposed(by: disposeBag)
     }
     
         private func bindToCollectionViewData() {

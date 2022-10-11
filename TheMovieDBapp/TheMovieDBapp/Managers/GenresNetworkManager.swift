@@ -44,7 +44,7 @@ class GenresNetworkManager {
         }.resume()
     }
     // MARK: - Get movies with genre
-    func getMovies(with genre: String, _ completionHandler: @escaping ([ResultByGenre]) -> Void) {
+    func getMovies(with genre: String, _ completionHandler: @escaping ([Media]) -> Void) {
         guard let url = URL(string: APIs.getResultWithGenre.rawValue + VideoType.movie.rawValue) else { return }
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         components?.queryItems = [ URLQueryItem(name: "api_key", value: APIs.apiKey.rawValue),
@@ -62,7 +62,7 @@ class GenresNetworkManager {
         }.resume()
     }
     // MARK: - Get TVs with genre
-    func getTVs(with genre: String, _ completionHandler: @escaping ([ResultByGenre]) -> Void) {
+    func getTVs(with genre: String, _ completionHandler: @escaping ([Media]) -> Void) {
         guard let url = URL(string: APIs.getResultWithGenre.rawValue + VideoType.tv.rawValue) else { return }
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         components?.queryItems = [ URLQueryItem(name: "api_key", value: APIs.apiKey.rawValue),

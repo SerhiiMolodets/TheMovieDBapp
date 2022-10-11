@@ -25,7 +25,7 @@ class GenreTableViewCell: UITableViewCell {
         bindToCollectionViewData()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 // send data to next screen
-        genreCollectionView.rx.modelSelected(ResultByGenre.self)
+        genreCollectionView.rx.modelSelected(Media.self)
             .subscribe { movie in
                 if let detailViewController = storyboard.instantiateViewController(identifier: "MoviewDetailViewControllerId")
                     as? MoviewDetailViewController {

@@ -7,9 +7,9 @@
 
 import Foundation
 class MoviewDetailViewModel {
-    var movie: ResultByGenre
+    var movie: Media
     
-    init(movie: ResultByGenre) {
+    init(movie: Media) {
         self.movie = movie
     }
 }

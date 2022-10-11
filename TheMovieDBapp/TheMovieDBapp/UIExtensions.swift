@@ -60,7 +60,7 @@ extension UIView {
         gradient.endPoint = CGPoint(x: 0.75, y: 0.5)
         let shape = CAShapeLayer()
         shape.lineWidth = 1
-        shape.path = UIBezierPath(roundedRect: self.bounds.insetBy(dx: 2, dy: 2), cornerRadius: 6).cgPath
+        shape.path = UIBezierPath(roundedRect: self.bounds.insetBy(dx: 0.25, dy: 0.5), cornerRadius: 6).cgPath
         shape.strokeColor = UIColor.black.cgColor
         shape.fillColor = UIColor.clear.cgColor
         gradient.mask = shape

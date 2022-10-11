@@ -32,13 +32,13 @@ class SearchViewModel {
             .asDriver(onErrorJustReturn: SearchError.unkowned)
     }
 
-    private let contentSubject = PublishSubject<[ResultByGenre]>()
-    var content: Driver<[ResultByGenre]> {
+    private let contentSubject = PublishSubject<[Media]>()
+    var content: Driver<[Media]> {
         return contentSubject
             .asDriver(onErrorJustReturn: [])
     }
     
-    func search(byTerm term: String) -> Observable<[ResultByGenre]> {
+    func search(byTerm term: String) -> Observable<[Media]> {
         var bufferArray = historyOfSearch.value
         bufferArray.dropLast()
         bufferArray.insert(term, at: 0)
@@ -51,7 +51,7 @@ class SearchViewModel {
             .filter { !$0.isEmpty }
             .distinctUntilChanged()
             .debounce(.seconds(3), scheduler: MainScheduler.instance)
-            .flatMapLatest { [weak self] term -> Observable<[ResultByGenre]> in
+            .flatMapLatest { [weak self] term -> Observable<[Media]> in
                 guard let self = self else { return Observable.empty() }
                 // every new try to search, the error signal will
                 // emit nil to hide the error view
@@ -59,7 +59,7 @@ class SearchViewModel {
                 // switch to loading mode
                 self.loadingSubject.onNext(true)
                 return self.search(byTerm: term)
-                    .catch { [weak self] error -> Observable<[ResultByGenre]> in
+                    .catch { [weak self] error -> Observable<[Media]> in
                         guard let self = self else { return Observable.empty() }
                         self.errorSubject.onNext(SearchError.underlyingError(error))
                         return Observable.empty()

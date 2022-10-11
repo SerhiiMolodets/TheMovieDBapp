@@ -11,7 +11,7 @@ import RxSwift
 class SearchNetworkManger {
     static let shared = SearchNetworkManger()
     
-    func searchAPI(movie: String) -> Observable<[ResultByGenre]> {
+    func searchAPI(movie: String) -> Observable<[Media]> {
         return Observable.create { observer in
             let url = URL(string: APIs.searchMovie.rawValue)!
             var components = URLComponents(url: url, resolvingAgainstBaseURL: false)

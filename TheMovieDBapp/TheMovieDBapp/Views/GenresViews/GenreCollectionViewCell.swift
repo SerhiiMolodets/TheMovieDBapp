@@ -26,7 +26,7 @@ class GenreCollectionViewCell: UICollectionViewCell {
         titleImageView.image = nil
     }
 
-    func configure(with movieByGenre: ResultByGenre) {
+    func configure(with movieByGenre: Media) {
         indicator.startAnimating()
         self.titleImageView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + (movieByGenre.posterPath ?? ""))),
                                         completed: { [weak self] _, _, _, _ in

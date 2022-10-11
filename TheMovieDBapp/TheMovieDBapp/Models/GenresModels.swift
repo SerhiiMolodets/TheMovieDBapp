@@ -22,7 +22,7 @@ struct Genre: Codable {
 // MARK: - MoviesByGenre
 struct MoviesByGenre: Codable {
     let page: Int
-    let results: [ResultByGenre]
+    let results: [Media]
     let totalPages, totalResults: Int
 
     enum CodingKeys: String, CodingKey {
@@ -33,7 +33,7 @@ struct MoviesByGenre: Codable {
 }
 
 // MARK: - Result
-struct ResultByGenre: Codable, IdentifiableType, Equatable {
+struct Media: Codable, IdentifiableType, Equatable {
     var identity: Int { return id }
     
     typealias Identity = Int
@@ -71,10 +71,10 @@ struct GenreSection {
 
 extension GenreSection: AnimatableSectionModelType {
 
-    typealias Item = ResultByGenre
+    typealias Item = Media
     typealias Identity = String
     
-    init(original: GenreSection, items: [ResultByGenre]) {
+    init(original: GenreSection, items: [Media]) {
         self.items = items
         self = original
     }

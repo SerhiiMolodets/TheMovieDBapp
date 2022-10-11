@@ -27,7 +27,7 @@ class SearchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(with movie: ResultByGenre) {
+    func configure(with movie: Media) {
         self.titleLabel.text = movie.title
         self.overviewLabel.text = movie.overview
         guard let poster = movie.posterPath else { return }

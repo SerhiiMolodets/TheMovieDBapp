@@ -9,6 +9,8 @@ import Foundation
 
 class AuthNetworkManager {
     static let shared = AuthNetworkManager()
+    private init() {}
+    
     var sessionID = ""
     var token = ""
     var iserID = ""
@@ -139,4 +141,5 @@ class AuthNetworkManager {
             }
         }
     }
+    
 }

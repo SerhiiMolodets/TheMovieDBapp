@@ -20,7 +20,8 @@ enum APIs: String {
     case getResultWithGenre = "https://api.themoviedb.org/3/discover/"
     case getImage = "https://image.tmdb.org/t/p/original"
     case searchMovie = "https://api.themoviedb.org/3/search/movie"
-    
+    case videos = "/videos"
+
     static func checkResponce(_ data: Data?, _ responce: URLResponse?, _ error: Error?, completionHandler: @escaping (Data) -> Void) {
         if error != nil {
             print("error")
@@ -53,4 +54,9 @@ enum SearchError: Error {
     case underlyingError(Error)
     case notFound
     case unkowned
+}
+
+enum MediaType: String {
+    case tv = "tv/"
+    case movie = "movie/"
 }

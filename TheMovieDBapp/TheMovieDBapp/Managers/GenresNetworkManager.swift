@@ -79,7 +79,5 @@ class GenresNetworkManager {
             })
         }.resume()
     }
-    private init() {
-        
-    }
+    private init() {}
 }

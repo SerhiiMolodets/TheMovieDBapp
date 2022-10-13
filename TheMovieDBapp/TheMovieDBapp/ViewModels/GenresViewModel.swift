@@ -11,6 +11,7 @@ import RxCocoa
 import RxDataSources
 
 class GenresViewModel {
+    static var stateSegment: MediaType = .movie
     // MARK: - List of movie genres
     var movieGenres = BehaviorRelay<[Genre]>(value: [])
     // MARK: - List of TV genres

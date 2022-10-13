@@ -8,9 +8,13 @@
 import UIKit
 import SDWebImage
 import youtube_ios_player_helper
+import RxSwift
+import RxCocoa
 
 class MoviewDetailViewController: UIViewController {
     var movieDetailViewModel: MoviewDetailViewModel?
+    private let disposeBag = DisposeBag()
+    
     @IBOutlet weak var posterView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewTextView: UITextView!
@@ -32,7 +36,11 @@ class MoviewDetailViewController: UIViewController {
         posterView.layer.cornerRadius = 25
         titleLabel.text = (movieDetailViewModel.movie.title ?? "") + (movieDetailViewModel.movie.name ?? "")
         overviewTextView.text = movieDetailViewModel.movie.overview
-
+        movieDetailViewModel.videoKey
+            .drive { [weak self] key in
+                guard let self = self else { return }
+                self.trailerPlayerView.load(withVideoId: key)
+            }.disposed(by: disposeBag)
     }
     
 }

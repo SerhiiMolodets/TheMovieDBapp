@@ -31,6 +31,7 @@ class GenreTableViewCell: UITableViewCell {
                     as? MoviewDetailViewController {
                     detailViewController.movieDetailViewModel = MoviewDetailViewModel(movie: movie.element!)
                     self.parentViewController?.navigationController?.pushViewController(detailViewController, animated: true)
+//                    print(movie.element!.id)
                 }
             }.disposed(by: disposeBag)
     }

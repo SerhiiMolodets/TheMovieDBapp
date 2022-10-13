@@ -35,7 +35,6 @@ class SearchNetworkManger {
             return Disposables.create {
                 return dataTask.cancel()
             }
-            
         }
     }
     

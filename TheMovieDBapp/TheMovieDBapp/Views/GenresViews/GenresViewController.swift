@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 class GenresViewController: UIViewController {
- 
+
     let genresViewModel = GenresViewModel()
     var disposeBag = DisposeBag()
     
@@ -47,9 +47,11 @@ class GenresViewController: UIViewController {
             guard let self = self else { return }
             switch state {
             case 0:
+                GenresViewModel.stateSegment = .movie
                 self.genresViewModel.updateMovieGenres()
             case 1:
                 self.genresViewModel.updateTVGenres()
+                GenresViewModel.stateSegment = .tv
             default:
                 fatalError("segment controll error")
             }

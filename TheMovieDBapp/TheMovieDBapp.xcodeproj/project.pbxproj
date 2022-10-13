@@ -17,6 +17,8 @@
 		0817B28728DE300D0060DBFA /* APIsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817B28628DE300D0060DBFA /* APIsModels.swift */; };
 		084694A128E1F45B003ACE30 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084694A028E1F45B003ACE30 /* Constans.swift */; };
 		084694A328E35086003ACE30 /* AccountModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084694A228E35086003ACE30 /* AccountModels.swift */; };
+		084A698F28F88AF800F50F3B /* DetailNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084A698E28F88AF800F50F3B /* DetailNetworkManager.swift */; };
+		084A699128F88BF000F50F3B /* DetailModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084A699028F88BF000F50F3B /* DetailModels.swift */; };
 		084BF80A28E5A88C001E3AB9 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084BF80928E5A88C001E3AB9 /* GenresViewController.swift */; };
 		084BF80C28E5A9BD001E3AB9 /* GenresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084BF80B28E5A9BD001E3AB9 /* GenresViewModel.swift */; };
 		084BF80E28E5AA7F001E3AB9 /* GenresModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084BF80D28E5AA7F001E3AB9 /* GenresModels.swift */; };
@@ -52,6 +54,8 @@
 		0817B28628DE300D0060DBFA /* APIsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIsModels.swift; sourceTree = "<group>"; };
 		084694A028E1F45B003ACE30 /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		084694A228E35086003ACE30 /* AccountModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModels.swift; sourceTree = "<group>"; };
+		084A698E28F88AF800F50F3B /* DetailNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNetworkManager.swift; sourceTree = "<group>"; };
+		084A699028F88BF000F50F3B /* DetailModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModels.swift; sourceTree = "<group>"; };
 		084BF80928E5A88C001E3AB9 /* GenresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewController.swift; sourceTree = "<group>"; };
 		084BF80B28E5A9BD001E3AB9 /* GenresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewModel.swift; sourceTree = "<group>"; };
 		084BF80D28E5AA7F001E3AB9 /* GenresModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresModels.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				084694A228E35086003ACE30 /* AccountModels.swift */,
 				084BF80D28E5AA7F001E3AB9 /* GenresModels.swift */,
 				0859819D28F0470000A18C56 /* SearchModels.swift */,
+				084A699028F88BF000F50F3B /* DetailModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 				0817B28328DE07E20060DBFA /* AuthNetworkManager.swift */,
 				084BF81428E5C2DD001E3AB9 /* GenresNetworkManager.swift */,
 				085981A128F052E200A18C56 /* SearchNetworkManager.swift */,
+				084A698E28F88AF800F50F3B /* DetailNetworkManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -379,6 +385,7 @@
 				086CC05528EF2C6E00EB6B63 /* UIExtensions.swift in Sources */,
 				0817B28428DE07E20060DBFA /* AuthNetworkManager.swift in Sources */,
 				084694A128E1F45B003ACE30 /* Constans.swift in Sources */,
+				084A698F28F88AF800F50F3B /* DetailNetworkManager.swift in Sources */,
 				0817B27428DDE47E0060DBFA /* AuthenticationViewController.swift in Sources */,
 				085981C728F0BC9C00A18C56 /* SearchTableViewCell.swift in Sources */,
 				0859819E28F0470000A18C56 /* SearchModels.swift in Sources */,
@@ -388,6 +395,7 @@
 				0817B27028DDE47E0060DBFA /* AppDelegate.swift in Sources */,
 				0817B28728DE300D0060DBFA /* APIsModels.swift in Sources */,
 				084BF81128E5B425001E3AB9 /* GenreTableViewCell.swift in Sources */,
+				084A699128F88BF000F50F3B /* DetailModels.swift in Sources */,
 				0817B27228DDE47E0060DBFA /* SceneDelegate.swift in Sources */,
 				084BF81528E5C2DD001E3AB9 /* GenresNetworkManager.swift in Sources */,
 				084BF80C28E5A9BD001E3AB9 /* GenresViewModel.swift in Sources */,

@@ -53,7 +53,18 @@ class MoviewDetailViewController: UIViewController {
     }
     
     @IBAction func favoriteButtonDidTap(_ sender: UIButton) {
-
+        movieDetailViewModel?.updFavorite(add: true, completionHandler: { responce in
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Favorites",
+                                              message: responce.statusMessage,
+                                              preferredStyle: UIAlertController.Style.alert)
+                
+                alert.addAction(UIAlertAction(title: "Ok",
+                                              style: UIAlertAction.Style.default,
+                                              handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
         favoriteButton.addBorderGradient()
 
     }

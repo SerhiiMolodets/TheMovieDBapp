@@ -13,7 +13,7 @@ class AuthNetworkManager {
     
     var sessionID = ""
     var token = ""
-    var iserID = ""
+    var userID = 0
     
     // MARK: - Get new users token
     private func newToken(_ completionHandler: @escaping (Token) -> Void) {
@@ -75,6 +75,7 @@ class AuthNetworkManager {
             APIs.checkResponce(data, responce, error) { responceData in
                 if let sessionID = try? JSONDecoder().decode(SessionID.self, from: responceData) {
                     print("session id " + sessionID.sessionID)
+                    self.sessionID = sessionID.sessionID
                     completionHandler(sessionID)
                 }
             }
@@ -107,6 +108,7 @@ class AuthNetworkManager {
             APIs.checkResponce(data, responce, error, completionHandler: { responceData in
                 if let accountDetail = try? JSONDecoder().decode(Account.self, from: responceData) {
                     print("usersID + \(accountDetail.id)")
+                    self.userID = accountDetail.id
                     completionHandler()
                 }
             })

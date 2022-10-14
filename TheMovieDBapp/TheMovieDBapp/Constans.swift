@@ -21,16 +21,16 @@ enum APIs: String {
     case getImage = "https://image.tmdb.org/t/p/original"
     case searchMovie = "https://api.themoviedb.org/3/search/movie"
     case videos = "/videos"
-
+    case favorite = "/favorite"
     static func checkResponce(_ data: Data?, _ responce: URLResponse?, _ error: Error?, completionHandler: @escaping (Data) -> Void) {
         if error != nil {
             print("error")
         } else if let resp = responce as? HTTPURLResponse,
-                  resp.statusCode == 200, let responceData = data {
+                  resp.statusCode/200 == 1, let responceData = data {
             completionHandler(responceData)
         }
     }
-
+    
 }
 enum VideoType: String {
     case movie
@@ -57,6 +57,6 @@ enum SearchError: Error {
 }
 
 enum MediaType: String {
-    case tv = "tv/"
-    case movie = "movie/"
+    case tv = "tv"
+    case movie = "movie"
 }

@@ -27,4 +27,16 @@ class MoviewDetailViewModel {
                 self.videoSubject.accept(key.element!)
             }.disposed(by: disposeBag)
     }
+    
+    func updFavorite(add: Bool, completionHandler: @escaping (FavoriteResponce) -> Void) {
+        DetailNetworkManager
+            .shared
+            .updateFavorites(media: GenresViewModel.stateSegment.rawValue,
+                                                    user: AuthNetworkManager.shared.userID,
+                                                    add: add,
+                                                    mediaID: movie.id,
+                                                    sessionID: AuthNetworkManager.shared.sessionID) { responce in
+            completionHandler(responce)
+        }
+    }
 }

@@ -30,3 +30,16 @@ struct Result: Codable {
         case id
     }
 }
+
+// MARK: - FavoriteBodyModel
+struct FavoriteBodyModel: Codable {
+    let mediaType: String
+    let mediaID: Int
+    let favorite: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case mediaType = "media_type"
+        case mediaID = "media_id"
+        case favorite
+    }
+}

@@ -45,10 +45,7 @@ class GenreTableViewCell: UITableViewCell {
                 .disposed(by: disposeBag)
         }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-    }
+
     func configure(_ genre: Genre, state segment: Int) {
         self.titleLabel.text = genre.name
 

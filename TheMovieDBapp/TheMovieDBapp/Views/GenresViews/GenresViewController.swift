@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 class GenresViewController: UIViewController {
-
+    
     let genresViewModel = GenresViewModel()
     var disposeBag = DisposeBag()
     
@@ -20,15 +20,12 @@ class GenresViewController: UIViewController {
             genreTableView.register(UINib(nibName: "GenreTableViewCell", bundle: nil), forCellReuseIdentifier: "GenreViewCellId")
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().barTintColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 0.5)
-        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 0.5)
-        typeSegmentControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-        typeSegmentControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        setupUI()
         bindTableData()
-    
+        
     }
     
     // MARK: Connetct data and configure tableView
@@ -36,7 +33,7 @@ class GenresViewController: UIViewController {
         //        Drive genres to table
         self.genresViewModel.sourceDataTableView.switchLatest().asDriver(onErrorJustReturn: [])
             .drive(self.genreTableView.rx.items(cellIdentifier: "GenreViewCellId",
-                                           cellType: GenreTableViewCell.self)) {[weak self] _, genre, cell in
+                                                cellType: GenreTableViewCell.self)) {[weak self] _, genre, cell in
                 guard let self = self else { return }
                 cell.configure(genre, state: self.typeSegmentControl.selectedSegmentIndex)
             }.disposed(by: self.disposeBag)
@@ -55,9 +52,15 @@ class GenresViewController: UIViewController {
             default:
                 fatalError("segment controll error")
             }
-        
+            
         }.disposed(by: disposeBag)
-
+        
+    }
+    private func setupUI() {
+        UITabBar.appearance().barTintColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 0.5)
+        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 0.5)
+        typeSegmentControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+        typeSegmentControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
     }
     
 }

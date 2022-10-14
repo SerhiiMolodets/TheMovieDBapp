@@ -220,10 +220,11 @@
                         <viewLayoutGuide key="safeArea" id="o7N-hP-iNz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="star" catalog="system" id="P4x-fY-tK9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N7w-zU-S43" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3086" y="382"/>
+            <point key="canvasLocation" x="729" y="844"/>
         </scene>
         <!--Title-->
         <scene sceneID="PCp-ZX-Ul0">
@@ -295,6 +296,21 @@
                                                     <constraint firstAttribute="width" secondItem="CGL-sn-3aC" secondAttribute="height" multiplier="100:150" id="Krp-09-81J"/>
                                                 </constraints>
                                             </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2Vz-dT-Vye">
+                                                <rect key="frame" x="35" y="28" width="83" height="20.5"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="3ne-nz-9tI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="41.5" height="20.5"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODL-vU-Ndn">
+                                                        <rect key="frame" x="41.5" y="0.0" width="41.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.60249379140000003" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VQ-le-a5L">
                                                 <rect key="frame" x="15" y="600" width="384" height="29"/>
                                                 <color key="backgroundColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -319,10 +335,17 @@
                                                     <constraint firstAttribute="width" secondItem="3W9-N0-PUF" secondAttribute="height" multiplier="4:3" id="RcM-6K-DXX"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpR-By-bdr">
-                                                <rect key="frame" x="15" y="1083" width="67" height="31"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpR-By-bdr">
+                                                <rect key="frame" x="15" y="1083" width="47" height="31"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system">
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="favoriteButtonDidTap:" destination="ScO-eV-MWY" eventType="touchUpInside" id="ya2-wa-d8y"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -334,6 +357,8 @@
                                             <constraint firstItem="OjO-Xy-bxW" firstAttribute="leading" secondItem="TYl-Rc-ftq" secondAttribute="leading" constant="12" id="GZ6-sd-6Oe"/>
                                             <constraint firstItem="lpR-By-bdr" firstAttribute="leading" secondItem="TYl-Rc-ftq" secondAttribute="leading" constant="15" id="KrT-Tg-leD"/>
                                             <constraint firstItem="7VQ-le-a5L" firstAttribute="leading" secondItem="TYl-Rc-ftq" secondAttribute="leading" constant="15" id="TUs-14-onn"/>
+                                            <constraint firstItem="2Vz-dT-Vye" firstAttribute="leading" secondItem="CGL-sn-3aC" secondAttribute="leading" constant="20" id="X0E-3P-x4v"/>
+                                            <constraint firstItem="2Vz-dT-Vye" firstAttribute="top" secondItem="CGL-sn-3aC" secondAttribute="top" constant="20" id="bBH-2U-Ubt"/>
                                             <constraint firstAttribute="trailing" secondItem="3W9-N0-PUF" secondAttribute="trailing" constant="15" id="bP5-F7-bCw"/>
                                             <constraint firstItem="CGL-sn-3aC" firstAttribute="top" secondItem="TYl-Rc-ftq" secondAttribute="top" constant="8" id="bYg-cv-YEh"/>
                                             <constraint firstItem="7VQ-le-a5L" firstAttribute="top" secondItem="CGL-sn-3aC" secondAttribute="bottom" constant="16" id="dN7-Bg-4Vv"/>
@@ -372,6 +397,8 @@
                         <outlet property="favoriteButton" destination="lpR-By-bdr" id="8YM-Zy-SHH"/>
                         <outlet property="overviewTextView" destination="OjO-Xy-bxW" id="6I1-RY-S04"/>
                         <outlet property="posterView" destination="CGL-sn-3aC" id="mV4-Wt-Lcm"/>
+                        <outlet property="raitingLabel" destination="ODL-vU-Ndn" id="IGf-De-96M"/>
+                        <outlet property="raitingStack" destination="2Vz-dT-Vye" id="KQM-KR-W53"/>
                         <outlet property="titleLabel" destination="7VQ-le-a5L" id="X4h-rD-BAm"/>
                         <outlet property="trailerPlayerView" destination="3W9-N0-PUF" id="21j-Fr-qMS"/>
                         <outlet property="trailerView" destination="3W9-N0-PUF" id="wou-f3-gny"/>
@@ -428,6 +455,7 @@
                     <connections>
                         <segue destination="u1M-8b-nWq" kind="relationship" relationship="viewControllers" id="hw4-Jc-2Bi"/>
                         <segue destination="mfr-6e-1Sn" kind="relationship" relationship="viewControllers" id="LQl-mo-jh6"/>
+                        <segue destination="qqr-oq-JBY" kind="relationship" relationship="viewControllers" id="CFH-l5-HY3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8rc-MB-zlB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -436,10 +464,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Star" width="10" height="10"/>
         <image name="comingSoon" width="500" height="280"/>
         <image name="film" catalog="system" width="128" height="93"/>
         <image name="logo" width="130" height="31"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

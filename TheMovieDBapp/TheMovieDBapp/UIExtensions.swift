@@ -43,9 +43,7 @@ extension UIView {
         gradientLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 1, b: 0, c: 0, d: 3.91, tx: 0, ty: -1.44))
         
         gradientLayer.bounds = self.bounds.insetBy(dx: -0.5*self.bounds.size.width, dy: -0.5*self.bounds.size.height)
-        
         gradientLayer.position = self.center
-        
     }
 }
 extension UIView {

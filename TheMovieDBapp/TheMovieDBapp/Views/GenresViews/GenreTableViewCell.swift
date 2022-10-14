@@ -45,7 +45,6 @@ class GenreTableViewCell: UITableViewCell {
                 .disposed(by: disposeBag)
         }
     
-
     func configure(_ genre: Genre, state segment: Int) {
         self.titleLabel.text = genre.name
 

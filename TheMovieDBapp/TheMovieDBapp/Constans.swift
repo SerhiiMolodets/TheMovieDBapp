@@ -57,6 +57,7 @@ enum SearchError: Error {
 }
 
 enum MediaType: String {
-    case tv = "tv"
-    case movie = "movie"
+    case tv
+    case movie
+    case movies
 }

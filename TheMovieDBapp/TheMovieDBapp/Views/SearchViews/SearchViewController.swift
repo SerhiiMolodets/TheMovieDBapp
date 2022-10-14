@@ -35,10 +35,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         bindToSearchVM()
         setupObservers()
-        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 0.5)
-        errorView?.isHidden = true
-        loadingView?.isHidden = true
-        searchTableView.backgroundColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 1)
+        setupUI()
     }
     
     private func bindToSearchVM() {
@@ -48,7 +45,7 @@ class SearchViewController: UIViewController {
             .rx
             .text
             .orEmpty
-
+        
             .distinctUntilChanged()
             .bind(to: searchVm.searchObserver)
             .disposed(by: disposeBag)
@@ -78,18 +75,17 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func setupObservers() {
-        searchField.rx.text.orEmpty.subscribe { text in
-            if let zero = text.element?.isEmpty,
-            zero {
-                print(0)
-            } else {
-                
-            }
-        }.disposed(by: disposeBag)
+    private func setupObservers() {
         searchVm.content
             .drive(searchTableView.rx.items(cellIdentifier: "SearchCellId", cellType: SearchTableViewCell.self)) {_, movie, cell in
                 cell.configure(with: movie)
             }.disposed(by: disposeBag)
+    }
+    
+    private func setupUI() {
+        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 0.5)
+        errorView?.isHidden = true
+        loadingView?.isHidden = true
+        searchTableView.backgroundColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 1)
     }
 }

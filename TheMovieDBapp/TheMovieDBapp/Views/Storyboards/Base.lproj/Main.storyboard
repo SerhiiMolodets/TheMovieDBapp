@@ -210,17 +210,44 @@
             </objects>
             <point key="canvasLocation" x="1583" y="382"/>
         </scene>
-        <!--View Controller-->
+        <!--Favorite View Controller-->
         <scene sceneID="WYq-5S-YpM">
             <objects>
-                <viewController id="qqr-oq-JBY" sceneMemberID="viewController">
+                <viewController id="qqr-oq-JBY" customClass="FavoriteViewController" customModule="TheMovieDBapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XT3-ns-zYy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="laf-f3-oS6">
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Movies"/>
+                                    <segment title="TV shows"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.42745098469999998" green="0.46666663889999999" blue="0.8156862855" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Faa-q5-ebC">
+                                <rect key="frame" x="0.0" y="119" width="414" height="694"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="o7N-hP-iNz"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.023" green="0.010999999999999999" blue="0.17100000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Faa-q5-ebC" firstAttribute="top" secondItem="laf-f3-oS6" secondAttribute="bottom" id="225-rn-Nmj"/>
+                            <constraint firstItem="o7N-hP-iNz" firstAttribute="trailing" secondItem="Faa-q5-ebC" secondAttribute="trailing" id="NtK-3J-b6f"/>
+                            <constraint firstItem="laf-f3-oS6" firstAttribute="top" secondItem="o7N-hP-iNz" secondAttribute="top" id="QGv-UT-4EH"/>
+                            <constraint firstItem="o7N-hP-iNz" firstAttribute="bottom" secondItem="Faa-q5-ebC" secondAttribute="bottom" id="UKR-Hp-wvN"/>
+                            <constraint firstItem="o7N-hP-iNz" firstAttribute="trailing" secondItem="laf-f3-oS6" secondAttribute="trailing" id="W7h-O4-YEf"/>
+                            <constraint firstItem="Faa-q5-ebC" firstAttribute="leading" secondItem="o7N-hP-iNz" secondAttribute="leading" id="eCT-z9-uqz"/>
+                            <constraint firstItem="laf-f3-oS6" firstAttribute="leading" secondItem="o7N-hP-iNz" secondAttribute="leading" id="jx2-OD-xma"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="star" catalog="system" id="P4x-fY-tK9"/>
+                    <connections>
+                        <outlet property="favoritesTableView" destination="Faa-q5-ebC" id="PM1-41-Kw0"/>
+                        <outlet property="typeSegmentControl" destination="laf-f3-oS6" id="oUY-xa-cQw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N7w-zU-S43" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

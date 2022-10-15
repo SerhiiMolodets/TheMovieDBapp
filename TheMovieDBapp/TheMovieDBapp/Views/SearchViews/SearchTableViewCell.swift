@@ -31,13 +31,7 @@ class SearchTableViewCell: UITableViewCell {
         self.titleLabel.text = movie.title
         self.overviewLabel.text = movie.overview
         guard let poster = movie.posterPath else { return }
-        indicator.startAnimating()
-        self.posterView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + poster)), completed: { [weak self] _, _, _, _ in
-            guard let self = self else { return }
-            self.indicator.stopAnimating()
-//            self.raitingLabel.text = " \(movieByGenre.voteAverage) "
-            
-        })
+        self.posterView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + poster)), completed: nil)
     }
     
 }

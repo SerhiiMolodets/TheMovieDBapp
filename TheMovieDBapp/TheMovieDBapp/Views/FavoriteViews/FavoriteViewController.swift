@@ -41,6 +41,19 @@ class FavoriteViewController: UIViewController {
                 default: break
                 }
             }.disposed(by: disposeBag)
+        
+        favoritesTableView
+            .rx
+            .modelDeleted(Media.self)
+            .subscribe { [weak self] media in
+                self?.favoritesViewModel
+                    .updFavorite(mediaID: media.element?.id ?? 0, completionHandler: { [weak self] responce in
+                        print(self?.favoritesViewModel.mediaType.rawValue)
+                        self?.favoritesViewModel.getList()
+                        print(responce.statusMessage)
+                })
+            }.disposed(by: disposeBag)
+
     }
     
     private func setupObservers() {

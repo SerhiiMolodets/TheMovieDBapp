@@ -87,5 +87,6 @@ class SearchViewController: UIViewController {
         errorView?.isHidden = true
         loadingView?.isHidden = true
         searchTableView.backgroundColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 1)
+
     }
 }

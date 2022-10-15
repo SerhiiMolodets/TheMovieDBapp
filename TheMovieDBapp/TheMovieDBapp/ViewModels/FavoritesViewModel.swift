@@ -28,5 +28,22 @@ class FavoritesViewModel {
             self?.contentSubject.onNext(elements)
         }.disposed(by: disposeBag)
     }
+    func updFavorite(mediaID: Int, completionHandler: @escaping (FavoriteResponce) -> Void) {
+        var singleMedia = ""
+        if mediaType.rawValue == "movies" {
+            singleMedia = "movie"
+        } else {
+            singleMedia = "tv"
+        }
+        DetailNetworkManager
+            .shared
+            .updateFavorites(media: singleMedia,
+                             user: AuthNetworkManager.shared.userID,
+                             add: false,
+                             mediaID: mediaID,
+                             sessionID: AuthNetworkManager.shared.sessionID) { responce in
+                completionHandler(responce)
+            }
+    }
     
 }

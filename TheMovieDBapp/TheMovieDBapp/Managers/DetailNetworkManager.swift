@@ -51,7 +51,7 @@ class DetailNetworkManager {
                          mediaID: Int,
                          sessionID: String,
                          completionHandler: @escaping (FavoriteResponce) -> Void) {
-        let body = FavoriteBodyModel(mediaType: GenresViewModel.stateSegment.rawValue, mediaID: mediaID, favorite: add)
+        let body = FavoriteBodyModel(mediaType: type, mediaID: mediaID, favorite: add)
         let sendData = try? JSONEncoder().encode(body)
         guard let url = URL(string: APIs.account.rawValue + "/\(ID)" + APIs.favorite.rawValue),
               let data = sendData else { return }

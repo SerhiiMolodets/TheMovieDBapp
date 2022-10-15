@@ -41,6 +41,9 @@
 		086E14DB28E0C3A400502117 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086E14DA28E0C3A400502117 /* AuthenticationViewModel.swift */; };
 		08A2C39328F4908E0053E98F /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A2C39228F4908E0053E98F /* MovieDetailViewModel.swift */; };
 		08A2C39728F491380053E98F /* MoviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A2C39628F491380053E98F /* MoviewDetailViewController.swift */; };
+		08CBE53528FB05E0003985A2 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CBE53428FB05E0003985A2 /* Repository.swift */; };
+		08CBE53728FB0A74003985A2 /* FavoritesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CBE53628FB0A74003985A2 /* FavoritesDataManager.swift */; };
+		08CBE53928FB0D67003985A2 /* FavoritesRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CBE53828FB0D67003985A2 /* FavoritesRealmModel.swift */; };
 		08CD7CF428FABFE60040DA53 /* NavigationTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CD7CF328FABFE60040DA53 /* NavigationTabBarViewController.swift */; };
 		08F9DFBD28EA1334004F590C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 08F9DFBC28EA1334004F590C /* Podfile */; };
 		4A380AE1544C3A200C31F4D7 /* Pods_TheMovieDBapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA8203D5A4BC43DE7B8DFA1 /* Pods_TheMovieDBapp.framework */; };
@@ -83,6 +86,9 @@
 		086E14DA28E0C3A400502117 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		08A2C39228F4908E0053E98F /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		08A2C39628F491380053E98F /* MoviewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviewDetailViewController.swift; sourceTree = "<group>"; };
+		08CBE53428FB05E0003985A2 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		08CBE53628FB0A74003985A2 /* FavoritesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDataManager.swift; sourceTree = "<group>"; };
+		08CBE53828FB0D67003985A2 /* FavoritesRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRealmModel.swift; sourceTree = "<group>"; };
 		08CD7CF328FABFE60040DA53 /* NavigationTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTabBarViewController.swift; sourceTree = "<group>"; };
 		08F9DFBC28EA1334004F590C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1FA8203D5A4BC43DE7B8DFA1 /* Pods_TheMovieDBapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieDBapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +149,7 @@
 				084694A228E35086003ACE30 /* AccountModels.swift */,
 				084BF80D28E5AA7F001E3AB9 /* GenresModels.swift */,
 				084A699028F88BF000F50F3B /* DetailModels.swift */,
+				08CBE53828FB0D67003985A2 /* FavoritesRealmModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -177,6 +184,7 @@
 				085981A128F052E200A18C56 /* SearchNetworkManager.swift */,
 				084A698E28F88AF800F50F3B /* DetailNetworkManager.swift */,
 				08290D0128F9D98D00FC223D /* FavoritesNetworkManager.swift */,
+				08CBE53628FB0A74003985A2 /* FavoritesDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -246,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				084BF81328E5C291001E3AB9 /* Managers */,
+				08CBE53428FB05E0003985A2 /* Repository.swift */,
 				084694A028E1F45B003ACE30 /* Constans.swift */,
 				086CC05428EF2C6E00EB6B63 /* UIExtensions.swift */,
 			);
@@ -420,8 +429,10 @@
 				086E14DB28E0C3A400502117 /* AuthenticationViewModel.swift in Sources */,
 				085981A028F0472200A18C56 /* SearchViewController.swift in Sources */,
 				08A2C39728F491380053E98F /* MoviewDetailViewController.swift in Sources */,
+				08CBE53728FB0A74003985A2 /* FavoritesDataManager.swift in Sources */,
 				08290D0528F9E45500FC223D /* FavoriteTableViewCell.swift in Sources */,
 				085981C428F09A9400A18C56 /* SearchViewModel.swift in Sources */,
+				08CBE53528FB05E0003985A2 /* Repository.swift in Sources */,
 				08A2C39328F4908E0053E98F /* MovieDetailViewModel.swift in Sources */,
 				086CC05528EF2C6E00EB6B63 /* UIExtensions.swift in Sources */,
 				0817B28428DE07E20060DBFA /* AuthNetworkManager.swift in Sources */,
@@ -443,6 +454,7 @@
 				084BF81528E5C2DD001E3AB9 /* GenresNetworkManager.swift in Sources */,
 				084BF80C28E5A9BD001E3AB9 /* GenresViewModel.swift in Sources */,
 				08CD7CF428FABFE60040DA53 /* NavigationTabBarViewController.swift in Sources */,
+				08CBE53928FB0D67003985A2 /* FavoritesRealmModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

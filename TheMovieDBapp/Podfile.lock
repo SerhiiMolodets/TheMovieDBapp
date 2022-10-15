@@ -1,5 +1,10 @@
 PODS:
   - Differentiator (5.0.0)
+  - Realm (10.28.7):
+    - Realm/Headers (= 10.28.7)
+  - Realm/Headers (10.28.7)
+  - RealmSwift (10.28.7):
+    - Realm (= 10.28.7)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
@@ -7,6 +12,11 @@ PODS:
     - Differentiator (~> 5.0)
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
+  - RxRealm (5.0.4):
+    - Realm (~> 10.21)
+    - RealmSwift (~> 10.21)
+    - RxCocoa (~> 6.1)
+    - RxSwift (~> 6.1)
   - RxRelay (6.5.0):
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
@@ -16,8 +26,10 @@ PODS:
   - youtube-ios-player-helper (1.0.4)
 
 DEPENDENCIES:
+  - RealmSwift (~> 10)
   - RxCocoa (= 6.5.0)
   - RxDataSources (~> 5.0)
+  - RxRealm
   - RxSwift (= 6.5.0)
   - SDWebImage
   - youtube-ios-player-helper
@@ -25,8 +37,11 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Differentiator
+    - Realm
+    - RealmSwift
     - RxCocoa
     - RxDataSources
+    - RxRealm
     - RxRelay
     - RxSwift
     - SDWebImage
@@ -34,13 +49,16 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  Realm: d1d5ad078b9c1d22f99f7f7f2e692b548b518f24
+  RealmSwift: 7c38e0acca7d3df9cc60d79c073ef68245351d0e
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
+  RxRealm: 666c8785327fe2fff972a3093b35dc7055c1ca38
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SDWebImage: af5bbffef2cde09f148d826f9733dcde1a9414cd
   youtube-ios-player-helper: e9b97535e816db3152179d84d999bc1807ecd689
 
-PODFILE CHECKSUM: 8c74cd2f0fb215e50f86eff0ee43b93105c3b7ca
+PODFILE CHECKSUM: 6d713abc404c38e9e7d71179a36e8b8966d73558
 
 COCOAPODS: 1.11.3

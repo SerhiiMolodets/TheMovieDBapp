@@ -39,28 +39,21 @@ struct Media: Codable, IdentifiableType, Equatable {
     typealias Identity = Int
     
     let backdropPath: String?
-    let genreIDS: [Int]
     let id: Int
     let name: String?
     let overview: String
-    let popularity: Double
     let posterPath: String?
     let title: String?
-    let video: Bool?
     let voteAverage: Double
-    let voteCount: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case backdropPath = "backdrop_path"
-        case genreIDS = "genre_ids"
         case id
-        case overview, popularity
+        case overview
         case posterPath = "poster_path"
         case title
         case voteAverage = "vote_average"
-        case voteCount = "vote_count"
         case name
-        case video
     }
 }
 // MARK: - Section for RxDataSource

@@ -21,22 +21,28 @@ class FavoritesViewModel {
     }
     // MARK: - Get favorites list func
     func getList() {
-        let list = FavoritesNetworkManager
-            .shared
-            .getFavorites(media: mediaType,
-                          user: AuthNetworkManager.shared.userID,
-                          sessionID: AuthNetworkManager.shared.sessionID)
-        list.subscribe { [weak self] elements in
-            self?.contentSubject.onNext(elements)
-        }.disposed(by: disposeBag)
+        Repository.shared.fetchData(media: mediaType)
+            .subscribe { [weak self] elements in
+                self?.contentSubject.onNext(elements)
+            }.disposed(by: disposeBag)
+//        let list = FavoritesNetworkManager
+//            .shared
+//            .getFavorites(media: mediaType,
+//                          user: AuthNetworkManager.shared.userID,
+//                          sessionID: AuthNetworkManager.shared.sessionID)
+//        list.subscribe { [weak self] elements in
+//            self?.contentSubject.onNext(elements)
+//        }.disposed(by: disposeBag)
     }
     // MARK: - Delete from favorite list func
     func updFavorite(mediaID: Int, completionHandler: @escaping (FavoriteResponce) -> Void) {
         var singleMedia = ""
         if mediaType.rawValue == "movies" {
             singleMedia = "movie"
+            
         } else {
             singleMedia = "tv"
+            
         }
         DetailNetworkManager
             .shared
@@ -45,7 +51,9 @@ class FavoritesViewModel {
                              add: false,
                              mediaID: mediaID,
                              sessionID: AuthNetworkManager.shared.sessionID) { responce in
+                
                 completionHandler(responce)
+                FavoritesDataManager.shared.resetCache()
             }
     }
     

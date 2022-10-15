@@ -24,7 +24,7 @@ struct MoviesByGenre: Codable {
     let page: Int
     let results: [Media]
     let totalPages, totalResults: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case page, results
         case totalPages = "total_pages"
@@ -49,7 +49,7 @@ struct Media: Codable, IdentifiableType, Equatable {
     let video: Bool?
     let voteAverage: Double
     let voteCount: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case backdropPath = "backdrop_path"
         case genreIDS = "genre_ids"
@@ -63,14 +63,14 @@ struct Media: Codable, IdentifiableType, Equatable {
         case video
     }
 }
-
+// MARK: - Section for RxDataSource
 struct GenreSection {
     let header: String
     var items: [Item]
 }
 
 extension GenreSection: AnimatableSectionModelType {
-
+    
     typealias Item = Media
     typealias Identity = String
     

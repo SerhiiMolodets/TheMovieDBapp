@@ -8,7 +8,7 @@
 import UIKit
 
 class NavigationTabBarViewController: UITabBarController {
-
+    // MARK: - Sign Out button action
     @IBAction func signOutButtonDidTap(_ sender: Any) {
         AuthNetworkManager.shared.logOut { responce in
             if responce.success {

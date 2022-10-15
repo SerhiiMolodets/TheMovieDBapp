@@ -17,21 +17,20 @@ class SearchTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        posterView.layer.cornerRadius = 30
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        setupUI()
+        
     }
     
+    // MARK: - Configure cell
     func configure(with movie: Media) {
         self.titleLabel.text = movie.title
         self.overviewLabel.text = movie.overview
         guard let poster = movie.posterPath else { return }
         self.posterView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + poster)), completed: nil)
+    }
+    // MARK: - Configure UI
+    private func setupUI() {
+        posterView.layer.cornerRadius = 30
     }
     
 }

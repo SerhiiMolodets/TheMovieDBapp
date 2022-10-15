@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+// MARK: - Add pading in textfield
 class TextFieldWithPadding: UITextField {
     var textPadding = UIEdgeInsets(
         top: 10,
@@ -27,6 +27,7 @@ class TextFieldWithPadding: UITextField {
     }
 }
 
+// MARK: - Add gradient
 extension UIView {
     func layerGradient() {
         let gradientLayer = CAGradientLayer()
@@ -46,11 +47,12 @@ extension UIView {
         gradientLayer.position = self.center
     }
 }
+// MARK: - Add gradient on border of element
 extension UIView {
     func addBorderGradient() {
         self.layer.cornerRadius = 6
         self.layer.masksToBounds = true
-//        self.clipsToBounds = true
+        //        self.clipsToBounds = true
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
         gradient.colors = [GradientColors.start, GradientColors.end]
@@ -65,7 +67,7 @@ extension UIView {
         self.layer.addSublayer(gradient)
     }
 }
-
+// MARK: - Add ability for navigation from cells
 extension UIView {
     var parentViewController: UIViewController? {
         var parentResponder: UIResponder? = self

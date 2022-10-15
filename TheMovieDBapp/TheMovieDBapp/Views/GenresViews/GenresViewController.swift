@@ -17,6 +17,7 @@ class GenresViewController: UIViewController {
     @IBOutlet weak var typeSegmentControl: UISegmentedControl!
     @IBOutlet weak var genreTableView: UITableView! {
         didSet {
+            // MARK: - Register cell
             genreTableView.register(UINib(nibName: "GenreTableViewCell", bundle: nil), forCellReuseIdentifier: "GenreViewCellId")
         }
     }
@@ -28,7 +29,7 @@ class GenresViewController: UIViewController {
         
     }
     
-    // MARK: Connetct data and configure tableView
+    // MARK: Connect data and configure tableView
     func bindTableData() {
         //        Drive genres to table
         self.genresViewModel.sourceDataTableView.switchLatest().asDriver(onErrorJustReturn: [])
@@ -56,6 +57,7 @@ class GenresViewController: UIViewController {
         }.disposed(by: disposeBag)
         
     }
+    // MARK: - Configure UI
     private func setupUI() {
         UITabBar.appearance().barTintColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 0.5)
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 0.023, green: 0.011, blue: 0.171, alpha: 0.5)

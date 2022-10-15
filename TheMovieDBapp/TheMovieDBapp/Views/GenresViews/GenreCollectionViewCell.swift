@@ -17,15 +17,13 @@ class GenreCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        containerView.clipsToBounds = true
-        containerView.layer.cornerRadius = 20
-        raitingStackView.layer.cornerRadius = 5
-      
+        setupUI()
+        
     }
     override func prepareForReuse() {
         titleImageView.image = nil
     }
-
+    // MARK: - Configure cell
     func configure(with movieByGenre: Media) {
         indicator.startAnimating()
         self.titleImageView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + (movieByGenre.posterPath ?? ""))),
@@ -35,5 +33,11 @@ class GenreCollectionViewCell: UICollectionViewCell {
             self.raitingLabel.text = " \(movieByGenre.voteAverage) "
             
         })
+    }
+    // MARK: - Configure UI
+    private func setupUI() {
+        containerView.clipsToBounds = true
+        containerView.layer.cornerRadius = 20
+        raitingStackView.layer.cornerRadius = 5
     }
 }

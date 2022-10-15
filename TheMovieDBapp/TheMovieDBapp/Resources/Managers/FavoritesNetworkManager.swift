@@ -23,7 +23,7 @@ class FavoritesNetworkManager {
                                        URLQueryItem(name: "sort_by", value: "created_at.asc")]
             let queryURL = components!.url!
             var dataTask: URLSessionDataTask
-           dataTask =  URLSession.shared.dataTask(with: queryURL) { (data, responce, error) in
+            dataTask =  URLSession.shared.dataTask(with: queryURL) { (data, responce, error) in
                 
                 APIs.checkResponce(data, responce, error, completionHandler: { responceData in
                     do { let media = try JSONDecoder().decode(MoviesByGenre.self, from: responceData)
@@ -33,7 +33,7 @@ class FavoritesNetworkManager {
                         print(error)
                     }
                 })
-               observer.onCompleted()
+                observer.onCompleted()
             }
             dataTask.resume()
             return Disposables.create {

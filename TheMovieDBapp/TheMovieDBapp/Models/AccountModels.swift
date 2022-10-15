@@ -14,7 +14,7 @@ struct Account: Codable {
     let iso6391, iso31661, name: String
     let includeAdult: Bool
     let username: String
-
+    
     enum CodingKeys: String, CodingKey {
         case avatar, id
         case iso6391 = "iso_639_1"
@@ -39,7 +39,7 @@ struct Gravatar: Codable {
 // MARK: - Tmdb
 struct Tmdb: Codable {
     let avatarPath: JSONNull?
-
+    
     enum CodingKeys: String, CodingKey {
         case avatarPath = "avatar_path"
     }
@@ -48,21 +48,21 @@ struct Tmdb: Codable {
 // MARK: - Encode/decode helpers
 
 class JSONNull: Codable, Hashable {
-
+    
     public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
         return true
     }
-
+    
     public var hashValue: Int {
         return 0
     }
-
+    
     public func hash(into hasher: inout Hasher) {
         // No-op
     }
-
+    
     public init() {}
-
+    
     public required init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if !container.decodeNil() {
@@ -70,7 +70,7 @@ class JSONNull: Codable, Hashable {
                                              DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
         }
     }
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encodeNil()

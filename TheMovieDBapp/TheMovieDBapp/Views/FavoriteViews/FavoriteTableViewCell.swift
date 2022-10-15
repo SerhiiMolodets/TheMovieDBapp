@@ -17,11 +17,13 @@ class FavoriteTableViewCell: UITableViewCell {
         super.awakeFromNib()
         setupUI()
     }
+    // MARK: - Configure cell
     func configure(_ media: Media) {
         titleLabel.text = (media.title ?? "") + (media.name ?? "")
         overViewTextView.text = media.overview
         posterView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + (media.posterPath ?? ""))), completed: nil)
     }
+    // MARK: - Configure UI
     private func setupUI() {
         posterView.layer.cornerRadius = 20
         posterView.addBorderGradient()

@@ -11,13 +11,15 @@ import RxCocoa
 
 class FavoritesViewModel {
     private let disposeBag = DisposeBag()
+    // MARK: - Movie or TV shows on screen
     var mediaType: MediaType = .movies
+    // MARK: - Data observable
     private let contentSubject = PublishSubject<[Media]>()
     var content: Driver<[Media]> {
         return contentSubject
             .asDriver(onErrorJustReturn: [])
     }
-    
+    // MARK: - Get favorites list func
     func getList() {
         let list = FavoritesNetworkManager
             .shared
@@ -28,6 +30,7 @@ class FavoritesViewModel {
             self?.contentSubject.onNext(elements)
         }.disposed(by: disposeBag)
     }
+    // MARK: - Delete from favorite list func
     func updFavorite(mediaID: Int, completionHandler: @escaping (FavoriteResponce) -> Void) {
         var singleMedia = ""
         if mediaType.rawValue == "movies" {

@@ -27,14 +27,13 @@ class MoviewDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-
-        // Do any additional setup after loading the view.
     }
+    
+    // MARK: - Configure UI
     private func setupUI() {
         guard let movieDetailViewModel = movieDetailViewModel else { return }
-
-        self.posterView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + (movieDetailViewModel.movie.posterPath ?? ""))),
-                                    completed: { _, _, _, _ in })
+        
+        self.posterView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + (movieDetailViewModel.movie.posterPath ?? ""))), completed: nil)
         posterView.layer.cornerRadius = 25
         titleLabel.text = (movieDetailViewModel.movie.title ?? "") + (movieDetailViewModel.movie.name ?? "")
         overviewTextView.text = movieDetailViewModel.movie.overview
@@ -51,7 +50,7 @@ class MoviewDetailViewController: UIViewController {
         
         raitingStack.layer.cornerRadius = 8
     }
-    
+    // MARK: - Favorite button action, result alert
     @IBAction func favoriteButtonDidTap(_ sender: UIButton) {
         movieDetailViewModel?.updFavorite(add: true, completionHandler: { responce in
             DispatchQueue.main.async {
@@ -66,7 +65,5 @@ class MoviewDetailViewController: UIViewController {
             }
         })
         favoriteButton.addBorderGradient()
-
     }
-    
 }

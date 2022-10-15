@@ -21,7 +21,7 @@ struct Result: Codable {
     let type: String
     let official: Bool
     let publishedAt, id: String
-
+    
     enum CodingKeys: String, CodingKey {
         case iso6391 = "iso_639_1"
         case iso31661 = "iso_3166_1"
@@ -36,7 +36,7 @@ struct FavoriteBodyModel: Codable {
     let mediaType: String
     let mediaID: Int
     let favorite: Bool
-
+    
     enum CodingKeys: String, CodingKey {
         case mediaType = "media_type"
         case mediaID = "media_id"
@@ -49,7 +49,7 @@ struct FavoriteResponce: Codable {
     let success: Bool
     let statusCode: Int
     let statusMessage: String
-
+    
     enum CodingKeys: String, CodingKey {
         case success
         case statusCode = "status_code"

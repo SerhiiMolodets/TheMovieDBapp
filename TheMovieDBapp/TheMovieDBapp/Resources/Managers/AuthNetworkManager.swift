@@ -32,26 +32,26 @@ class AuthNetworkManager {
     }
     // MARK: - Validate token with userName and password
     private  func logInWith(username: String, password: String, _ completionHandler: @escaping () -> Void) {
-            let validateBody = ValidateToken(username: username, password: password, requestToken: self.token)
-            
-            let sendData = try? JSONEncoder().encode(validateBody)
-            guard let url = URL(string: APIs.validateToken.rawValue),
-                  let data = sendData else { return }
-            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-            components?.queryItems = [ URLQueryItem(name: "api_key", value: APIs.apiKey.rawValue)]
-            guard let queryURL = components?.url else { return }
-            
-            var request = URLRequest(url: queryURL)
-            request.httpMethod = HTTPMethod.POST.rawValue
-            request.httpBody = data
-            request.setValue("\(data.count)", forHTTPHeaderField: "Content-Length")
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            URLSession.shared.dataTask(with: request) { (data, responce, error) in
-                APIs.checkResponce(data, responce, error) { _ in
-                    completionHandler()
-                }
-            }.resume()
+        let validateBody = ValidateToken(username: username, password: password, requestToken: self.token)
+        
+        let sendData = try? JSONEncoder().encode(validateBody)
+        guard let url = URL(string: APIs.validateToken.rawValue),
+              let data = sendData else { return }
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        components?.queryItems = [ URLQueryItem(name: "api_key", value: APIs.apiKey.rawValue)]
+        guard let queryURL = components?.url else { return }
+        
+        var request = URLRequest(url: queryURL)
+        request.httpMethod = HTTPMethod.POST.rawValue
+        request.httpBody = data
+        request.setValue("\(data.count)", forHTTPHeaderField: "Content-Length")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        URLSession.shared.dataTask(with: request) { (data, responce, error) in
+            APIs.checkResponce(data, responce, error) { _ in
+                completionHandler()
+            }
+        }.resume()
     }
     // MARK: - Create session id
     private func createSession(with token: String, completionHandler: @escaping (SessionID) -> Void) {
@@ -72,7 +72,7 @@ class AuthNetworkManager {
         URLSession.shared.dataTask(with: request) { (data, responce, error) in
             APIs.checkResponce(data, responce, error) { [weak self] responceData in
                 if let sessionID = try? JSONDecoder().decode(SessionID.self, from: responceData) {
-//                    print("session id " + sessionID.sessionID)
+                    //                    print("session id " + sessionID.sessionID)
                     self?.sessionID = sessionID.sessionID
                     completionHandler(sessionID)
                 }
@@ -106,7 +106,7 @@ class AuthNetworkManager {
         URLSession.shared.dataTask(with: queryURL) { (data, responce, error) in
             APIs.checkResponce(data, responce, error, completionHandler: { [weak self] responceData in
                 if let accountDetail = try? JSONDecoder().decode(Account.self, from: responceData) {
-//                    print("usersID + \(accountDetail.id)")
+                    //                    print("usersID + \(accountDetail.id)")
                     self?.userID = accountDetail.id
                     completionHandler()
                 }
@@ -151,13 +151,13 @@ class AuthNetworkManager {
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         components?.queryItems = [ URLQueryItem(name: "api_key", value: APIs.apiKey.rawValue)]
         guard let queryURL = components?.url else { return }
-
+        
         var request = URLRequest(url: queryURL)
         request.httpMethod = HTTPMethod.DELETE.rawValue
         request.httpBody = data
         request.setValue("\(data.count)", forHTTPHeaderField: "Content-Length")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
+        
         URLSession.shared.dataTask(with: request) { (data, responce, error) in
             APIs.checkResponce(data, responce, error) { responceData in
                 if let responceLogOut = try? JSONDecoder().decode(LogOutResponce.self, from: responceData) {

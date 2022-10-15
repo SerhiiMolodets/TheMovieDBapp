@@ -44,7 +44,7 @@ class DetailNetworkManager {
         }
         
     }
-    // MARK: - Update Favorites NetworkPart
+    // MARK: - Update Favorites request
     func updateFavorites(media type: String,
                          user ID: Int,
                          add: Bool,
@@ -69,8 +69,8 @@ class DetailNetworkManager {
         URLSession.shared.dataTask(with: request) { (data, responce, error) in
             APIs.checkResponce(data, responce, error) { responceData in
                 do {
-                   let favoriteResponce = try JSONDecoder().decode(FavoriteResponce.self, from: responceData)
-                        completionHandler(favoriteResponce)
+                    let favoriteResponce = try JSONDecoder().decode(FavoriteResponce.self, from: responceData)
+                    completionHandler(favoriteResponce)
                 } catch {
                     print(error)
                 }

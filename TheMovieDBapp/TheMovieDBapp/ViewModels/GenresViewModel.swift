@@ -11,6 +11,7 @@ import RxCocoa
 import RxDataSources
 
 class GenresViewModel {
+    // MARK: - Movie or TV shows on screen
     static var stateSegment: MediaType = .movie
     // MARK: - List of movie genres
     var movieGenres = BehaviorRelay<[Genre]>(value: [])
@@ -23,17 +24,17 @@ class GenresViewModel {
         cell.configure(with: item)
         return cell
     }
-// MARK: - Observable array with results of request movie/TV for collectionView
+    // MARK: - Observable array with results of request movie/TV for collectionView
     var dataCollectionView = BehaviorRelay<[GenreSection]>(value: [GenreSection(header: "result", items: [])])
     
     let sourceDataTableView = PublishSubject<Observable<[Genre]>>()
-// MARK: - Get movie genres list to genreVM
+    // MARK: - Get movie genres list to genreVM
     func updateMovieGenres() {
         GenresNetworkManager.shared.getMoviesGenres { [weak self] genres in
             guard let self = self else { return }
             self.movieGenres.accept(genres)
             self.sourceDataTableView.onNext(self.movieGenres.asObservable())
-
+            
         }
     }
     // MARK: - Get TV genres list to genreVM
@@ -42,7 +43,7 @@ class GenresViewModel {
             guard let self = self else { return }
             self.tVGenres.accept(genres)
             self.sourceDataTableView.onNext(self.tVGenres.asObservable())
-//            self.tVGenres.onCompleted()
+            //            self.tVGenres.onCompleted()
         }
     }
     // MARK: - Get movies by genre to genreVM
@@ -59,5 +60,5 @@ class GenresViewModel {
             self.dataCollectionView.accept([GenreSection(header: "TVs result", items: resultsGenre)])
         }
     }
-
+    
 }

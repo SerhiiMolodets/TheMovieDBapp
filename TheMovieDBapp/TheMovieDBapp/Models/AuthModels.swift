@@ -58,3 +58,17 @@ struct GuestSessionID: Codable {
         case expiresAt = "expires_at"
     }
 }
+// MARK: - SessionIDBody
+struct SessionIDBodyForDel: Codable {
+    let sessionID: String
+    
+    enum CodingKeys: String, CodingKey {
+        case sessionID = "session_id"
+    }
+}
+// MARK: - Log Out Responce
+struct LogOutResponce: Codable {
+    let success: Bool
+    
+
+}

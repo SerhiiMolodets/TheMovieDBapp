@@ -47,10 +47,8 @@ class AuthNetworkManager {
             request.setValue("\(data.count)", forHTTPHeaderField: "Content-Length")
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             
-            URLSession.shared.dataTask(with: request) { [weak self] (data, responce, error) in
-                guard let self = self else { return }
+            URLSession.shared.dataTask(with: request) { (data, responce, error) in
                 APIs.checkResponce(data, responce, error) { _ in
-                    print(self.token)
                     completionHandler()
                 }
             }.resume()
@@ -72,10 +70,10 @@ class AuthNetworkManager {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         URLSession.shared.dataTask(with: request) { (data, responce, error) in
-            APIs.checkResponce(data, responce, error) { responceData in
+            APIs.checkResponce(data, responce, error) { [weak self] responceData in
                 if let sessionID = try? JSONDecoder().decode(SessionID.self, from: responceData) {
-                    print("session id " + sessionID.sessionID)
-                    self.sessionID = sessionID.sessionID
+//                    print("session id " + sessionID.sessionID)
+                    self?.sessionID = sessionID.sessionID
                     completionHandler(sessionID)
                 }
             }
@@ -89,8 +87,9 @@ class AuthNetworkManager {
         guard let queryURL = components?.url else { return }
         
         URLSession.shared.dataTask(with: queryURL) { (data, responce, error) in
-            APIs.checkResponce(data, responce, error, completionHandler: { responceData in
+            APIs.checkResponce(data, responce, error, completionHandler: { [weak self] responceData in
                 if let guestSessionResponce = try? JSONDecoder().decode(GuestSessionID.self, from: responceData) {
+                    self?.sessionID = guestSessionResponce.guestSessionID
                     completionHandler(guestSessionResponce)
                 }
             })
@@ -105,10 +104,10 @@ class AuthNetworkManager {
         guard let queryURL = components?.url else { return }
         
         URLSession.shared.dataTask(with: queryURL) { (data, responce, error) in
-            APIs.checkResponce(data, responce, error, completionHandler: { responceData in
+            APIs.checkResponce(data, responce, error, completionHandler: { [weak self] responceData in
                 if let accountDetail = try? JSONDecoder().decode(Account.self, from: responceData) {
-                    print("usersID + \(accountDetail.id)")
-                    self.userID = accountDetail.id
+//                    print("usersID + \(accountDetail.id)")
+                    self?.userID = accountDetail.id
                     completionHandler()
                 }
             })
@@ -142,6 +141,30 @@ class AuthNetworkManager {
                 group.leave()
             }
         }
+    }
+    // MARK: - LogOut request
+    func logOut(completionHandler: @escaping (LogOutResponce) -> Void) {
+        let sessionIdBody = SessionIDBodyForDel(sessionID: sessionID)
+        let sendData = try? JSONEncoder().encode(sessionIdBody)
+        guard let url = URL(string: APIs.session.rawValue),
+              let data = sendData else { return }
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        components?.queryItems = [ URLQueryItem(name: "api_key", value: APIs.apiKey.rawValue)]
+        guard let queryURL = components?.url else { return }
+
+        var request = URLRequest(url: queryURL)
+        request.httpMethod = HTTPMethod.DELETE.rawValue
+        request.httpBody = data
+        request.setValue("\(data.count)", forHTTPHeaderField: "Content-Length")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        URLSession.shared.dataTask(with: request) { (data, responce, error) in
+            APIs.checkResponce(data, responce, error) { responceData in
+                if let responceLogOut = try? JSONDecoder().decode(LogOutResponce.self, from: responceData) {
+                    completionHandler(responceLogOut)
+                }
+            }
+        }.resume()
     }
     
 }

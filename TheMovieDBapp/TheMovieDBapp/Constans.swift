@@ -22,6 +22,7 @@ enum APIs: String {
     case searchMovie = "https://api.themoviedb.org/3/search/movie"
     case videos = "/videos"
     case favorite = "/favorite"
+    case session = "https://api.themoviedb.org/3/authentication/session"
     static func checkResponce(_ data: Data?, _ responce: URLResponse?, _ error: Error?, completionHandler: @escaping (Data) -> Void) {
         if error != nil {
             print("error")

@@ -29,7 +29,7 @@
         <!--Authentication View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="AuthenticationViewController" customModule="TheMovieDBapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthControllerID" id="BYZ-38-t0r" customClass="AuthenticationViewController" customModule="TheMovieDBapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -435,10 +435,10 @@
             </objects>
             <point key="canvasLocation" x="2347.826086956522" y="-275.22321428571428"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Navigation Tab Bar View Controller-->
         <scene sceneID="pmf-UC-2Wp">
             <objects>
-                <tabBarController storyboardIdentifier="tabBarControllerID" id="6Q9-2O-zFU" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarControllerID" id="6Q9-2O-zFU" customClass="NavigationTabBarViewController" customModule="TheMovieDBapp" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="qPA-CB-Wpz">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="v5f-De-KyM">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RNI-IN-E0q">
@@ -461,6 +461,9 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                     <color key="baseForegroundColor" red="0.41568624970000001" green="0.67058825489999996" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="signOutButtonDidTap:" destination="6Q9-2O-zFU" eventType="touchUpInside" id="gVE-e7-Jf2"/>
+                                </connections>
                             </button>
                             <color key="tintColor" red="0.41568624970000001" green="0.67058825489999996" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </barButtonItem>

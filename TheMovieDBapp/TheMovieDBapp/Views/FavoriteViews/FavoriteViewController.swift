@@ -61,7 +61,6 @@ class FavoriteViewController: UIViewController {
         favoritesViewModel.content
             .drive(favoritesTableView.rx.items(cellIdentifier: "FavoriteCellId", cellType: FavoriteTableViewCell.self)) {_, media, cell in
                 cell.configure(media)
-                
             }.disposed(by: disposeBag)
     }
     // MARK: - Configure UI

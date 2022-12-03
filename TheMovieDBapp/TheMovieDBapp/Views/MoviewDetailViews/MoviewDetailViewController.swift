@@ -41,7 +41,8 @@ class MoviewDetailViewController: UIViewController {
         movieDetailViewModel.videoKey
             .drive { [weak self] key in
                 guard let self = self else { return }
-                self.trailerPlayerView.load(withVideoId: key)
+                    self.trailerPlayerView.load(withVideoId: key)
+
             }.disposed(by: disposeBag)
         // MARK: - Configure favoriteButton
         favoriteButton.layer.cornerRadius = 6

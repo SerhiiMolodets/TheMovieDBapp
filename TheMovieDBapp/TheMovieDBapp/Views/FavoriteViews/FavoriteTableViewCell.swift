@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var posterView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overViewTextView: UITextView!
+    
+    private let transformer = SDImageResizingTransformer(size: CGSize(width: 100, height: 150), scaleMode: .fill)
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,7 +24,7 @@ class FavoriteTableViewCell: UITableViewCell {
     func configure(_ media: Media) {
         titleLabel.text = (media.title ?? "") + (media.name ?? "")
         overViewTextView.text = media.overview
-        posterView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + (media.posterPath ?? ""))), completed: nil)
+        posterView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + (media.posterPath ?? ""))),placeholderImage: nil, context: [.imageTransformer : transformer], progress: nil, completed: nil)
     }
     // MARK: - Configure UI
     private func setupUI() {

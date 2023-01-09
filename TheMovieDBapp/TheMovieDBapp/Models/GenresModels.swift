@@ -14,7 +14,7 @@ struct Genres: Codable {
 }
 
 // MARK: - Genre
-struct Genre: Codable {
+struct Genre: Codable, Equatable {
     let id: Int
     let name: String
 }
@@ -33,7 +33,7 @@ struct MoviesByGenre: Codable {
 }
 
 // MARK: - Result
-struct Media: Codable, IdentifiableType, Equatable {
+struct Media: Codable, IdentifiableType, Equatable, Hashable {
     var identity: Int { return id }
     
     typealias Identity = Int

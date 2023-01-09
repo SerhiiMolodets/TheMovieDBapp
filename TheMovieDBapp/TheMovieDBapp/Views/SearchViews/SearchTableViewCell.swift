@@ -15,6 +15,8 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var textStack: UIStackView!
     
+    private let transformer = SDImageResizingTransformer(size: CGSize(width: 400, height: 600), scaleMode: .fill)
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
@@ -26,7 +28,7 @@ class SearchTableViewCell: UITableViewCell {
         self.titleLabel.text = movie.title
         self.overviewLabel.text = movie.overview
         guard let poster = movie.posterPath else { return }
-        self.posterView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + poster)), completed: nil)
+        self.posterView.sd_setImage(with: URL(string: (APIs.getImage.rawValue + poster)), placeholderImage: nil, context: [.imageTransformer : transformer], progress: nil, completed: nil)
     }
     // MARK: - Configure UI
     private func setupUI() {

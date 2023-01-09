@@ -54,7 +54,8 @@ class GenresNetworkManager {
             
             APIs.checkResponce(data, responce, error, completionHandler: { responceData in
                 do { let moviesByGenre = try JSONDecoder().decode(MoviesByGenre.self, from: responceData)
-                    completionHandler(moviesByGenre.results)
+                    let unique = Array(Set(moviesByGenre.results))
+                    completionHandler(unique)
                 } catch {
                     print(error)
                 }
@@ -72,7 +73,8 @@ class GenresNetworkManager {
             
             APIs.checkResponce(data, responce, error, completionHandler: { responceData in
                 do { let moviesByGenre = try JSONDecoder().decode(MoviesByGenre.self, from: responceData)
-                    completionHandler(moviesByGenre.results)
+                    let unique = Array(Set(moviesByGenre.results))
+                    completionHandler(unique)
                 } catch {
                     print(error)
                 }

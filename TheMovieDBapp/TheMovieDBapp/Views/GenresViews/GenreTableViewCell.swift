@@ -7,9 +7,16 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class GenreTableViewCell: UITableViewCell {
     var disposeBag = DisposeBag()
+    var dataSource = RxCollectionViewSectionedReloadDataSource<GenreSection> { _, collectionView, indexPath, item in
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCollectionViewCellId",
+                                                      for: indexPath) as! GenreCollectionViewCell
+        cell.configure(with: item)
+        return cell
+    }
     
     let genresViewModel = GenresViewModel()
     @IBOutlet weak var titleLabel: UILabel!
@@ -26,10 +33,12 @@ class GenreTableViewCell: UITableViewCell {
         setupObservers()
         selected()
     }
+    
     // MARK: - Observe dataSource from genres viewModel
     private func setupObservers() {
         genresViewModel.dataCollectionView
             .asDriver()
+//            .debug()
             .drive(genreCollectionView
                 .rx
                 .items(dataSource: genresViewModel.dataSource))

@@ -18,7 +18,7 @@ class GenresViewModel {
     // MARK: - List of TV genres
     var tVGenres = BehaviorRelay<[Genre]>(value: [])
     // MARK: - Create datasource for collectionView and configure cell
-    let dataSource = RxCollectionViewSectionedReloadDataSource<GenreSection> { _, collectionView, indexPath, item in
+    var dataSource = RxCollectionViewSectionedReloadDataSource<GenreSection> { _, collectionView, indexPath, item in
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCollectionViewCellId",
                                                       for: indexPath) as! GenreCollectionViewCell
         cell.configure(with: item)
@@ -33,7 +33,8 @@ class GenresViewModel {
         GenresNetworkManager.shared.getMoviesGenres { [weak self] genres in
             guard let self = self else { return }
             self.movieGenres.accept(genres)
-            self.sourceDataTableView.onNext(self.movieGenres.asObservable())
+            self.sourceDataTableView.onNext(self.movieGenres.asObservable().distinctUntilChanged { $0 != $1 })
+                
             
         }
     }

@@ -28,8 +28,9 @@ Themoviedb API
 ```
 
 ## Overview
-| Authentification | Genres | Search 
-|:---------:|:---------:|:---------:
-![auth](https://github.com/SerhiiMolodets/TheMovieDBapp/assets/108882250/f6b2316c-f6a9-4c34-a6b1-fd0965d959a0)|![main](https://github.com/SerhiiMolodets/TheMovieDBapp/assets/108882250/8c866fb3-9d9a-48f7-8191-7954abc7aa4d)|![search](https://github.com/SerhiiMolodets/TheMovieDBapp/assets/108882250/c1f0d590-c554-4521-b333-7ab09f0b51d3)|
-| Saved | Detail
-| ![saved](https://github.com/SerhiiMolodets/TheMovieDBapp/assets/108882250/36a8737b-e55e-497b-8ece-ed997e2124a0) | ![detail](https://github.com/SerhiiMolodets/TheMovieDBapp/assets/108882250/f9c6b991-2ce3-4e7e-8692-5a0945cb6b5e)
+| Authentification | Genres | Search |
+|:---------:|:---------:|:---------:|
+| <img src="https://github.com/SerhiiMolodets/TheMovieDBapp/assets/108882250/f6b2316c-f6a9-4c34-a6b1-fd0965d959a0" width="300"> | <img src="https://github.com/SerhiiMolodets/TheMovieDBapp/assets/108882250/8c866fb3-9d9a-48f7-8191-7954abc7aa4d" width="300"> | <img src="https://github.com/SerhiiMolodets/TheMovieDBapp/assets/108882250/c1f0d590-c554-4521-b333-7ab09f0b51d3" width="300"> |
+| Saved | Detail |
+| <img src="https://github.com/SerhiiMolodets/TheMovieDBapp/assets/108882250/36a8737b-e55e-497b-8ece-ed997e2124a0" width="300"> | <img src="https://github.com/SerhiiMolodets/TheMovieDBapp/assets/108882250/f9c6b991-2ce3-4e7e-8692-5a0945cb6b5e" width="300"> |
+
